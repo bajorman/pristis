@@ -1,19 +1,28 @@
 @import "tailwindcss";
 
-/* Colours taken from the Google Sites "Simple" theme the site used. */
+/* Navy taken from the logo, with a teal accent. */
 :root {
   --background: #ffffff;
-  --foreground: #212121;
-  --header-overlay: #212121;
-  --button: #d3c9c9;
+  --foreground: #0f1c2b;
+  --muted: #5b6878;
+  --surface: #f4f6f9;
+  --navy: #0f2235;
+  --accent: #14a3a3;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-header-overlay: var(--header-overlay);
-  --color-button: var(--button);
+  --color-muted: var(--muted);
+  --color-surface: var(--surface);
+  --color-navy: var(--navy);
+  --color-accent: var(--accent);
   --font-sans: var(--font-lato);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
 }
 
 body {
