@@ -2,9 +2,8 @@
 
 Source of the PristisManagement website (www.pristismanagement.com).
 
-The content was imported on 2026-11-19 from the Google Sites version of the
-site (`sites.google.com/pristismanagement.com/www-pristismanagement-com`),
-page by page, together with its images.
+A one-page site in English. The first commit holds a copy of the earlier
+Google Sites version; the current layout replaced it.
 
 ## Commands
 
@@ -18,12 +17,16 @@ npm run lint
 
 ## Structure
 
-- `app/site.ts` – site name, contact e-mail, LinkedIn link, navigation menu
-- `app/components/PageHeader.tsx` – grey banner with the menu and page title
-- `app/page.tsx` – home page; every other page is `app/<slug>/page.tsx`
-  (`about`, `services`, `mentoring`, `for-startups`, `contact`)
+- `app/site.ts` – all copy: contact e-mail, LinkedIn link, menu, and the text
+  of every section (hero, who we help, services, steps, about)
+- `app/page.tsx` – the page layout, section by section; menu entries jump to
+  the sections' `id`s
+- `app/components/SiteHeader.tsx` – sticky top bar with the menu
+- `app/components/Icon.tsx` – outline icons for the service cards
+- `app/globals.css` – colour tokens (navy from the logo, teal accent)
 - `public/images/` – logo (`logo.png` original, `logo-128.png`/`logo-512.png`
-  resized), service banners `service-1..6.jpg`, header background `header-bg.jpg`
+  resized), used as favicon and link preview; the logo artwork has a typo
+  ("Managemeent"), so the header shows the name as text
 
 The site is built as a static export (`output: "export"` in `next.config.ts`),
 so `out/` can be hosted on any static host.

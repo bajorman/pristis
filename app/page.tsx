@@ -83,9 +83,15 @@ export default function Home() {
         {/* About */}
         <section id="about" className="bg-surface">
           <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 py-20 sm:px-6 md:grid-cols-[280px_1fr]">
-            {/* Placeholder until there is a photo. */}
-            <div className="flex aspect-square items-center justify-center rounded-2xl bg-navy/10 text-sm text-muted">
-              Photo
+            {/* Monogram until there is a photo. */}
+            <div
+              aria-hidden="true"
+              className="flex aspect-square items-center justify-center rounded-2xl bg-navy text-7xl font-light tracking-wider text-white"
+            >
+              {about.name
+                .split(" ")
+                .map((part) => part[0])
+                .join("")}
             </div>
             <div>
               <p className="text-sm font-bold uppercase tracking-widest text-accent">About</p>
@@ -106,9 +112,12 @@ export default function Home() {
           <div className="mx-auto max-w-6xl px-4 py-20 text-center sm:px-6">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Let&apos;s talk about your challenges</h2>
             <p className="mx-auto mt-4 max-w-xl text-white/75">
-              Write a few words about your situation and we will set up a free intro call.
+              Write a few words about your situation and we will set up an intro call.
             </p>
-            <a href={`mailto:${site.email}`} className="mt-8 inline-block rounded-full bg-accent px-8 py-3 font-bold hover:brightness-110">
+            <a
+              href={`mailto:${site.email}?subject=${encodeURIComponent("Intro call")}`}
+              className="mt-8 inline-block max-w-full break-all rounded-full bg-accent px-8 py-3 font-bold hover:brightness-110"
+            >
               {site.email}
             </a>
           </div>

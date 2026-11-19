@@ -3,7 +3,7 @@
 export const site = {
   name: "Pristis Management",
   url: "https://www.pristismanagement.com",
-  email: "pawel.bajorek@gmail.com",
+  email: "pawel.bajorek@pristismanagement.com",
   linkedin: "https://www.linkedin.com/in/pbajorek/",
 };
 
@@ -77,7 +77,7 @@ export const services = [
 export const steps = [
   {
     title: "Intro call",
-    text: "A free 30-minute conversation about where you are and what you need.",
+    text: "A short conversation about where you are and what you need.",
   },
   {
     title: "Diagnosis",
