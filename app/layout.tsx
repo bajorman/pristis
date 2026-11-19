@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Lato } from "next/font/google";
-import { site } from "./site";
+import { asset, site } from "./site";
 import "./globals.css";
 
 const lato = Lato({
@@ -17,8 +17,8 @@ export const metadata: Metadata = {
   },
   description:
     "PristisManagement is a consulting and mentoring company for technology leaders.",
-  icons: { icon: "/images/logo-128.png" },
-  openGraph: { images: "/images/logo-512.png" },
+  icons: { icon: asset("/images/logo-128.png") },
+  openGraph: { images: asset("/images/logo-512.png") },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

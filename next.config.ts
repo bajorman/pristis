@@ -1,9 +1,17 @@
 import type { NextConfig } from "next";
 
+// Set only when the site is served from a sub-path, e.g. "/pristis" on
+// https://bajorman.github.io/pristis/ before the custom domain points there.
+const basePath = process.env.PAGES_BASE_PATH ?? "";
+
 const nextConfig: NextConfig = {
   // Static export: `next build` writes plain HTML/CSS/JS to `out/`,
   // which can be hosted anywhere (GitHub Pages, Firebase Hosting, ...).
   output: "export",
+  basePath,
+  env: {
+    NEXT_PUBLIC_BASE_PATH: basePath,
+  },
   trailingSlash: true,
   images: {
     unoptimized: true,

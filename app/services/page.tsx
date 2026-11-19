@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import PageBody from "../components/PageBody";
 import PageHeader from "../components/PageHeader";
+import { asset } from "../site";
 
 export const metadata: Metadata = { title: "Services" };
 
@@ -25,7 +26,7 @@ export default function Services() {
           {services.map((service) => (
             <li key={service.image}>
               <Image
-                src={service.image}
+                src={asset(service.image)}
                 alt={service.name}
                 width={1280}
                 height={593}

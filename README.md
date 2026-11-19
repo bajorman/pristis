@@ -27,3 +27,14 @@ npm run lint
 
 The site is built as a static export (`output: "export"` in `next.config.ts`),
 so `out/` can be hosted on any static host.
+
+## Publishing
+
+Every push to `main` runs `.github/workflows/deploy.yml`, which lints, builds
+and deploys `out/` to GitHub Pages.
+
+While the site lives at https://bajorman.github.io/pristis/ the repository
+variable `PAGES_BASE_PATH` is `/pristis`, so links and images get that prefix.
+Once `www.pristismanagement.com` points at GitHub Pages, delete the variable
+(`gh variable delete PAGES_BASE_PATH`) and set the custom domain in the
+repository's Pages settings.
