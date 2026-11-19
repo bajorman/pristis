@@ -23,7 +23,7 @@ npm run lint
 - `app/page.tsx` – home page; every other page is `app/<slug>/page.tsx`
   (`about`, `services`, `mentoring`, `for-startups`, `contact`)
 - `public/images/` – logo (`logo.png` original, `logo-128.png`/`logo-512.png`
-  resized), service banners `service-1..6.png`, header background `header-bg.png`
+  resized), service banners `service-1..6.jpg`, header background `header-bg.jpg`
 
 The site is built as a static export (`output: "export"` in `next.config.ts`),
 so `out/` can be hosted on any static host.

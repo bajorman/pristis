@@ -14,7 +14,7 @@ export default function PageHeader({
   return (
     <header
       className="relative isolate overflow-hidden bg-cover bg-center text-white"
-      style={{ backgroundImage: `url(${asset("/images/header-bg.png")})` }}
+      style={{ backgroundImage: `url(${asset("/images/header-bg.jpg")})` }}
     >
       <div className="absolute inset-0 -z-10 bg-header-overlay opacity-40" />
 
