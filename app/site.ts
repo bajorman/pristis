@@ -21,6 +21,11 @@ export const company = {
 export const asset = (path: string) =>
   `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}${path}`;
 
+// Anchor of a starter-package card, derived from its title so the hero links
+// and the cards cannot drift apart: "AI system health check" -> "package-ai-system-health-check".
+export const packageId = (title: string) =>
+  `package-${title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}`;
+
 export const mailto = (subject: string) =>
   `mailto:${site.email}?subject=${encodeURIComponent(subject)}`;
 

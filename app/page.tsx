@@ -23,6 +23,7 @@ import {
   problems,
   results,
   orgPrinciples,
+  packageId,
   site,
   steps,
   ui,
@@ -87,7 +88,7 @@ export default function Home() {
                 {hero.entries.map((e) => (
                   <a
                     key={e.offer}
-                    href="#packages"
+                    href={`#${packageId(e.offer)}`}
                     className="group flex items-start gap-3 rounded-2xl border border-line bg-white/50 p-4 transition hover:border-copper/60 hover:bg-white"
                   >
                     <span className="mt-0.5 shrink-0 text-copper">
@@ -222,7 +223,7 @@ export default function Home() {
           </div>
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {packages.items.map((p) => (
-              <div key={p.title} className="flex flex-col rounded-3xl bg-ink p-6 text-white">
+              <div key={p.title} id={packageId(p.title)} className="flex flex-col rounded-3xl bg-ink p-6 text-white ring-copper-light ring-offset-4 ring-offset-paper target:ring-2">
                 <div className="flex items-start justify-between">
                   <span className="text-copper-light">
                     <Icon name={p.icon} className="size-7" />

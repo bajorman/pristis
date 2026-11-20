@@ -19,20 +19,29 @@ const MAX = 1_000_000_000;
 
 const pln = new Intl.NumberFormat("en-GB", { style: "currency", currency: "PLN", maximumFractionDigits: 0 });
 
-// Whole PLN amounts only: digits, optionally grouped in thousands with spaces,
-// commas or dots ("500000", "500 000", "500,000"). Anything else is an error,
-// so "1,000" is never read as 1 and "12,5" is not silently accepted.
+// Whole PLN amounts only: digits, optionally grouped in thousands with ONE kind
+// of separator used throughout the amount: a space, a comma or a dot
+// ("500000", "500 000", "1,234,567"). Mixed separators ("1,234.567"),
+// decimals ("12,5") and anything else are errors, never silently reinterpreted.
 type Parsed = { value: number; error?: string };
+
+// Thousands groups with the same separator throughout (backreference \1).
+const GROUPED = /^\d{1,3}([ \u00a0,.])\d{3}(?:\1\d{3})*$/;
+const DIGITS_AND_SEPARATORS = /^[\d \u00a0,.]+$/;
 
 function parseAmount(raw: string): Parsed {
   const v = raw.trim();
   if (v === "") return { value: 0, error: "Enter an amount (0 if none)." };
   if (/^-/.test(v)) return { value: 0, error: "The amount cannot be negative." };
-  const grouped = /^\d{1,3}([  ,.]\d{3})+$/.test(v);
-  if (!grouped && !/^\d+$/.test(v)) {
-    return { value: 0, error: "Use whole PLN, e.g. 500000 or 500 000." };
+  if (!/^\d+$/.test(v) && !GROUPED.test(v)) {
+    return {
+      value: 0,
+      error: DIGITS_AND_SEPARATORS.test(v)
+        ? "Use one thousands separator throughout, e.g. 1 234 567 or 1,234,567 (whole PLN, no decimals)."
+        : "Use whole PLN, e.g. 500000, 500 000 or 500,000.",
+    };
   }
-  const n = Number(v.replace(/[  ,.]/g, ""));
+  const n = Number(v.replace(/\D/g, ""));
   if (n > MAX) return { value: 0, error: "Amounts above PLN 1 billion are not supported." };
   return { value: n };
 }
@@ -66,7 +75,7 @@ export default function BrCalculator() {
       <div className="mt-6 grid gap-5">
         <div>
           <label className="block text-sm font-semibold text-white/85" htmlFor={`${id}-staff`}>
-            Qualifying staff costs of R&amp;D work (one year, whole PLN)
+            Qualifying staff costs of R&amp;D work (one year, whole PLN, e.g. 500 000)
           </label>
           <input
             id={`${id}-staff`}
@@ -80,12 +89,12 @@ export default function BrCalculator() {
           />
           <p id={`${id}-staff-hint`} className={`mt-1.5 text-xs ${staffParsed.error ? "text-red-200" : "text-white/45"}`}>
             {staffParsed.error ??
-              "Salaries and social contributions of employees, in proportion to their time on R&D. Deducted at 200%."}
+              "Employees' salaries and pay under contracts of mandate or for specific work (umowa zlecenie, umowa o dzieło), with the social contributions paid by the payer — in proportion to time spent on R&D. Deducted at 200%."}
           </p>
         </div>
         <div>
           <label className="block text-sm font-semibold text-white/85" htmlFor={`${id}-other`}>
-            Other qualifying costs (one year, whole PLN)
+            Other qualifying costs (one year, whole PLN, e.g. 100 000)
           </label>
           <input
             id={`${id}-other`}
@@ -148,8 +157,9 @@ export default function BrCalculator() {
       </div>
       <p className="mt-5 text-xs leading-relaxed text-white/45">
         A simulation for one tax year for a standard taxpayer without research and development centre (CBR) status,
-        not tax advice. It assumes the costs qualify and that taxable income is high
-        enough to use the whole deduction; an unused part can be carried forward to the next six tax years. Whether
+        not tax advice. It assumes the costs qualify and that there is enough income to absorb
+        the whole deduction — for CIT, income from sources other than capital gains; for PIT, income from business
+        activity. An unused part can be carried forward to the next six tax years. Whether
         the work and costs qualify depends on the nature of the work, its documentation and the taxpayer&apos;s
         situation, and is assessed by a licensed tax adviser. Progressive PIT is not modelled.
       </p>
