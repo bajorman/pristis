@@ -9,6 +9,13 @@ export const site = {
     "Consulting and mentoring for technology leaders: project management and Scaled Agile, AI strategy and AI engineering (RAG, AI agents, AI evaluation), interim CTO, technical due diligence and R&D tax relief in Poland.",
 };
 
+// The business as registered in CEIDG (Polish business register). "Pristis
+// Management" is the trading name; the registered business name is below.
+export const company = {
+  legalName: "PRISTIS Paweł Bajorek",
+  register: "CEIDG (Central Register and Information on Economic Activity)",
+};
+
 // Path to a file in public/, prefixed with the base path when the site is
 // served from a sub-path (next/image and CSS do not add it on their own).
 export const asset = (path: string) =>
@@ -29,10 +36,10 @@ export const nav = [
 export const hero = {
   eyebrow: "Consulting & mentoring for technology leaders",
   // The words in `accent` are set in italic accent colour after `title`.
-  title: "Build engineering organizations",
+  title: "Build engineering organisations",
   accent: "that scale.",
-  lead: "A hands-on partner for technology leaders: from organizing teams and projects to scaling agile and building AI systems that work in production – 20+ years of building organizations that deliver.",
-  primary: "Book an intro call",
+  lead: "A hands-on partner for technology leaders: from organising teams and projects to scaling agile and building AI systems that work in production – 20+ years of building organisations that deliver.",
+  primary: "Request a 30-minute intro call",
   secondary: "See services",
 };
 
@@ -40,10 +47,12 @@ export const facts = [
   { value: "20+", label: "years in IT and technology leadership" },
   { value: "300+", label: "engineers in the teams I have led" },
   { value: "$100M+", label: "IT budgets managed" },
-  { value: "10", label: "cloud transformations (GCP, AWS)" },
+  { value: "10", label: "cloud transformation initiatives (GCP, AWS)" },
 ];
 
-export const companies = ["HSBC", "UBS", "Sabre", "Hitachi Energy", "Comarch", "InPost"];
+// Industries rather than company names: naming former employers and clients
+// needs their confirmation, which is not in place.
+export const industries = ["Banking", "Airline technology", "Energy", "Logistics", "Healthcare", "Public sector"];
 
 export const problems = {
   kicker: "Why clients get in touch",
@@ -67,7 +76,7 @@ export const problems = {
     },
     {
       q: "“We build our own software. Are we eligible for R&D relief?”",
-      a: "Often yes — but the company doesn't claim it, because nobody has described the work as R&D. In Poland, it can be recovered for up to 5 years back.",
+      a: "Possibly — if the work meets the definition of R&D and is properly documented. Many companies never check. Past tax years that are not yet time-barred can also be reviewed.",
     },
   ],
 };
@@ -90,7 +99,7 @@ export const flagship = {
     {
       title: "Project management and methodology implementation",
       tagline: "The method fits your organisation — not the other way round.",
-      text: "I set up project management that matches how your company really works: PRINCE2, PMI or agile, or a tailored combination of them. I hold certifications in all three and I am not a zealot of any — I choose what works for you, then make it stick.",
+      text: "I set up project management that matches how your company really works: PRINCE2, PMI practices, and agile or hybrid delivery — or a tailored combination of them. I hold certifications in PRINCE2, PMI and Scrum and I am not a zealot of any — I choose what works for you, then make it stick.",
       points: [
         "Assessment of how projects are delivered today",
         "Choosing and tailoring the methodology (PRINCE2, PMI, Scrum, Kanban, hybrid)",
@@ -113,7 +122,7 @@ export const flagship = {
         "Team structure designed for fast flow — product-aligned and platform teams",
         "Metrics that show whether delivery really improved",
       ],
-      format: "first Agile Release Train in 8–12 weeks",
+      format: "first Agile Release Train typically in 8–12 weeks",
       icon: "train",
     },
     {
@@ -195,18 +204,18 @@ export const pillars: Pillar[] = [
     id: "rd",
     number: "02",
     title: "R&D tax relief in Poland",
-    lead: "For companies operating in Poland, including foreign-owned subsidiaries: the development work you already do can lower your tax bill. I help you prove it and document it.",
+    lead: "Qualifying software and AI development in Poland may be eligible for R&D tax relief. I help identify and document the technical work and prepare evidence of project activities and costs. A licensed Polish tax adviser assesses eligibility and advises on the claim.",
     icon: "coins",
     services: [
       {
-        title: "R&D potential audit",
-        text: "I check which of your team's work — software development, prototypes, AI implementations — qualifies for the Polish R&D tax relief (ulga B+R), including past years.",
+        title: "Technical R&D review",
+        text: "A review of your team's projects — software development, prototypes, AI work — to identify activities that may meet the definition of R&D, including in past tax years that are not yet time-barred. The tax eligibility assessment is made by a licensed tax adviser.",
         format: "1–2 weeks · fixed price",
       },
       {
-        title: "R&D relief documentation and claim",
-        text: "Descriptions of R&D projects, time and cost records, and the deduction calculation. The tax filing is done together with a licensed tax adviser.",
-        format: "success fee or fixed price",
+        title: "R&D documentation and evidence",
+        text: "Descriptions of R&D projects, records of time and project costs, and the technical evidence needed for a claim. A licensed tax adviser advises on the claim and the tax filing.",
+        format: "project",
       },
     ],
   },
@@ -315,20 +324,20 @@ export const aiPrinciples = {
 };
 
 export const aiRd = {
-  kicker: "What sets me apart",
-  title: "AI implementation,",
-  accent: "partly funded by tax relief.",
+  kicker: "AI and R&D tax relief in Poland",
+  title: "AI development that may qualify",
+  accent: "for R&D tax relief.",
   text: [
-    "For companies operating in Poland, building a new AI-based solution often meets the legal definition of development work. I plan these projects so that from day one they have the documentation the Polish R&D tax relief (ulga B+R) requires.",
-    "The result: you get a working system, and part of its cost comes back as lower tax. I bring both areas together in one project, so you don't have to coordinate a technology vendor and a tax relief adviser.",
+    "For companies operating in Poland, developing a genuinely new AI-based solution may meet the definition of development work under Polish tax law. A routine implementation or a standard software change does not. I plan such projects so that, from day one, the technical work is documented in the way an R&D tax relief (ulga B+R) claim requires.",
+    "Whether the relief applies depends on the nature of the work, its documentation and your tax situation. A licensed Polish tax adviser assesses eligibility and advises on the claim; I provide the technical analysis and the evidence.",
   ],
   points: [
-    "200% of R&D staff costs deductible from the tax base",
-    "Tax returns can be corrected for up to 5 years back",
+    "Qualifying R&D staff costs may be deducted at 200%, other qualifying costs at 100%",
+    "Past tax years that are not yet time-barred can be reviewed, each assessed separately",
     "Documentation kept as the work happens, not after the fact",
   ],
-  cta: "Request an R&D eligibility check",
-  ctaSubject: "R&D potential audit",
+  cta: "Request a technical R&D review",
+  ctaSubject: "Technical R&D review",
 };
 
 export const packages = {
@@ -336,12 +345,6 @@ export const packages = {
   title: "A concrete result in a short time",
   cta: "Ask about dates",
   items: [
-    {
-      title: "AI Sprint",
-      time: "5 days",
-      text: "A workshop with the board, one process selected, and a working AI prototype on your data — in a week. It comes with a quality test set, so the recommendation to build it or not rests on evidence.",
-      icon: "bolt",
-    },
     {
       title: "AI system health check",
       time: "2 weeks",
@@ -353,6 +356,12 @@ export const packages = {
       time: "2 weeks",
       text: "The project is late, over budget and the team is exhausted? An independent diagnosis and a recovery plan you can defend in front of the board.",
       icon: "lifebuoy",
+    },
+    {
+      title: "AI Sprint",
+      time: "5 days",
+      text: "A workshop with the board, one process selected, and a working AI prototype on your data — in a week. It comes with a quality test set, so the recommendation to build it or not rests on evidence. Needs a process owner available during the week and access to sample data.",
+      icon: "bolt",
     },
     {
       title: "AI due diligence",
@@ -372,6 +381,7 @@ export const packages = {
 export const results = {
   kicker: "Selected results",
   title: "Numbers from past work",
+  note: "Results from my previous roles in software, banking, airline technology and logistics — achieved by the teams and programmes I led or was part of.",
   items: [
     {
       value: "−80%",
@@ -394,14 +404,14 @@ export const results = {
       text: "Restructured teams and involved engineers directly in customers' problems.",
     },
     {
-      value: "ML × Google",
+      value: "ML",
       title: "a new product for aviation",
-      text: "Intelligent retailing of airline ancillaries, built together with a Google team.",
+      text: "Intelligent retailing of airline ancillaries, built together with a global technology partner.",
     },
     {
       value: "10",
-      title: "cloud migrations",
-      text: "Moved services to GCP and AWS in banking and enterprise environments (HSBC, UBS, Sabre).",
+      title: "cloud transformation initiatives",
+      text: "Moved services to GCP and AWS in global banks and in airline technology.",
     },
   ],
 };
@@ -438,7 +448,7 @@ export const models = {
   items: [
     { title: "Fixed-price project", text: "Scope and outcome agreed up front." },
     { title: "Ongoing support", text: "A few days a month, e.g. as a fractional CTO." },
-    { title: "Success fee", text: "Fee linked to the relief recovered or the savings achieved." },
+    { title: "Success fee", text: "For cost optimisation: a fee linked to the savings achieved." },
     { title: "Interim", text: "Full-time involvement for a defined period." },
   ],
 };
@@ -456,7 +466,7 @@ export const orgPrinciples = {
       text: "A leader creates the conditions for good work instead of controlling every step.",
     },
     {
-      title: "Candor builds trust",
+      title: "Candour builds trust",
       text: "Clear, honest feedback is a form of respect — for people and for results.",
     },
     {
@@ -473,7 +483,7 @@ export const bookshelf = {
     {
       title: "Winning",
       author: "Jack Welch, Suzy Welch",
-      text: "Candor, the right people in the right roles, and relentless execution.",
+      text: "Candour, the right people in the right roles, and relentless execution.",
     },
     {
       title: "Management 3.0",
@@ -503,8 +513,8 @@ export const about = {
   name: "Paweł Bajorek",
   role: "Founder, Pristis Management",
   text: [
-    "For more than 20 years I have been building software and the teams that create it. I started as a software engineer and architect at Comarch, then led programmes at HSBC, UBS and Sabre, where we worked with a Google team on machine-learning solutions for aviation. As Software Engineering Director at Hitachi Energy, I led a global organisation of more than 300 engineers.",
-    "My background in applied mathematics lets me understand AI from the inside — how neural networks learn, why they fail, and where their limits are. I combine that with hands-on knowledge of building production systems on foundation models: retrieval over company knowledge, agents, evaluation, fine-tuning, and keeping cost and latency under control. At Sabre, I worked with Google on machine-learning products for airlines, and I led the creation of an AI-based solution for aircraft weight and balance.",
+    "For more than 20 years I have been building software and the teams that create it. I started as a software engineer and architect at a large software house, then led programmes at two global banks and at a global airline technology company. As Software Engineering Director at a global energy technology company, I led an organisation of more than 300 engineers.",
+    "My background in applied mathematics lets me understand AI from the inside — how neural networks learn, why they fail, and where their limits are. I combine that with hands-on knowledge of building production systems on foundation models: retrieval over company knowledge, agents, evaluation, fine-tuning, and keeping cost and latency under control. In airline technology, I worked with a global technology partner on machine-learning products, and I led the creation of an AI-based solution for aircraft weight and balance.",
     "My approach to leadership is simple. Get the right people in the right roles, be candid with them, and keep strategy clear enough that everyone can act on it. Then manage the system, not the people: give teams real ownership with clear limits on decisions, and design the organisation so that work flows fast — with team structure and architecture shaped together, and no team carrying more than it can handle.",
     "Project management is one of my core strengths: I am certified in PRINCE2, PMI and Scrum, and I have rolled out Scaled Agile in several organisations. I don't defend any single method — I pick and tailor the one that fits the company.",
     "I am a mathematician (AGH University) and hold an MBA. I work personally with every client — no handing the project over to juniors, and no slide decks that change nothing.",
@@ -530,19 +540,19 @@ export const faq = {
   items: [
     {
       q: "Can a company that “only” builds software claim R&D relief?",
-      a: "Very often, yes. Building new software or significantly improving existing software can count as development work under Polish law. An audit of the specific projects settles it — I give an initial view during the first call.",
+      a: "It may. Creating new software or significantly improving existing software can meet the definition of development work under Polish law; routine changes and maintenance do not. I review the technical side of the projects, and a licensed tax adviser assesses whether the relief applies.",
     },
     {
-      q: "Which methodology do you recommend: PRINCE2, PMI or agile?",
+      q: "Which approach do you recommend: PRINCE2, PMI practices, agile or hybrid?",
       a: "None by default. I look at the type of projects, the culture, the regulations and the people, and then choose — often a combination. A method should serve the work, not the other way round.",
     },
     {
       q: "Will reorganising teams disrupt our delivery?",
-      a: "Not if the change is made in stages: start with the biggest bottleneck, measure the effect after each step, and only then move on.",
+      a: "The risk can be kept low by changing in stages: start with the biggest bottleneck, measure the effect after each step, and only then move on. How much disruption there is depends on the scale of the change and on your teams.",
     },
     {
       q: "How much does it cost to work together?",
-      a: "Diagnostics and packages have a fixed price, which I quote after the first call. For R&D relief and cost optimisation, a fee linked to the result is possible.",
+      a: "Diagnostics and packages have a fixed price, which I quote after the first call. For cost optimisation, a fee linked to the savings achieved is possible.",
     },
     {
       q: "Do you work with small companies?",
@@ -572,17 +582,22 @@ export const contact = {
   text: "Write a few sentences about your situation. I will reply and suggest a time for a 30-minute call.",
   subject: "Intro call",
   button: "Email me",
+  privacy: "How I handle your data",
 };
 
 export const ui = {
-  bookCall: "Book a call",
+  bookCall: "Request a call",
   menu: "Menu",
   close: "Close",
   contact: "Contact",
   mainMenu: "Main menu",
   footerMenu: "Footer",
+  privacy: "Privacy",
+  backHome: "Back to the home page",
   home: "Pristis Management — back to top",
-  workedWith: "Experience from",
+  workedWith: "Experience in",
   heroCaption: "20+ years in technology",
+  timeNote:
+    "Timeframes are typical and depend on scope, team readiness and the availability of a sponsor on your side.",
   heroAlt: "Paweł Bajorek, founder of Pristis Management",
 };

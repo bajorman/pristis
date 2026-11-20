@@ -1,7 +1,7 @@
 import Image from "next/image";
 import BrCalculator from "./components/BrCalculator";
 import Icon from "./components/Icon";
-import Logo from "./components/Logo";
+import SiteFooter from "./components/SiteFooter";
 import SiteHeader from "./components/SiteHeader";
 import {
   about,
@@ -10,7 +10,7 @@ import {
   aiRd,
   asset,
   bookshelf,
-  companies,
+  industries,
   contact,
   facts,
   faq,
@@ -18,7 +18,6 @@ import {
   hero,
   mailto,
   models,
-  nav,
   packages,
   pillars,
   problems,
@@ -63,7 +62,8 @@ export default function Home() {
             <div>
               <Kicker>{hero.eyebrow}</Kicker>
               <h1 className="mt-5 font-serif text-5xl font-medium leading-[1.02] tracking-tight text-ink sm:text-6xl lg:text-7xl">
-                {hero.title} <em className="font-normal text-copper">{hero.accent}</em>
+                {`${hero.title} `}
+                <em className="font-normal text-copper">{hero.accent}</em>
               </h1>
               <p className="mt-7 max-w-xl text-lg leading-relaxed text-muted">{hero.lead}</p>
               <div className="mt-9 flex flex-wrap gap-3">
@@ -125,7 +125,7 @@ export default function Home() {
           {/* Where the experience comes from */}
           <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-x-10 gap-y-3 px-4 py-8 sm:px-6">
             <p className="text-xs font-bold uppercase tracking-[0.22em] text-muted">{ui.workedWith}</p>
-            {companies.map((c) => (
+            {industries.map((c) => (
               <span key={c} className="font-serif text-xl font-medium text-ink/55">
                 {c}
               </span>
@@ -195,6 +195,35 @@ export default function Home() {
               </article>
             ))}
           </div>
+
+          {/* Starter packages: the entry offers, right after the main services */}
+          <div id="packages" className="mb-8 mt-24">
+            <Kicker>{packages.kicker}</Kicker>
+            <h3 className="mt-3 font-serif text-3xl font-medium tracking-tight sm:text-4xl">{packages.title}</h3>
+          </div>
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {packages.items.map((p) => (
+              <div key={p.title} className="flex flex-col rounded-3xl bg-ink p-6 text-white">
+                <div className="flex items-start justify-between">
+                  <span className="text-copper-light">
+                    <Icon name={p.icon} className="size-7" />
+                  </span>
+                  <span className="rounded-full border border-white/20 px-3 py-1 text-xs font-semibold text-white/80">
+                    {p.time}
+                  </span>
+                </div>
+                <h4 className="mt-6 font-serif text-2xl font-medium">{p.title}</h4>
+                <p className="mt-3 flex-1 text-sm leading-relaxed text-white/70">{p.text}</p>
+                <a
+                  href={mailto(p.title)}
+                  className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-copper-light hover:text-white"
+                >
+                  {packages.cta} <Icon name="arrow" className="size-4" />
+                </a>
+              </div>
+            ))}
+          </div>
+          <p className="mt-6 text-sm text-muted">{ui.timeNote}</p>
 
           <h3 className="mb-10 mt-24 font-serif text-3xl font-medium tracking-tight sm:text-4xl">{flagship.moreTitle}</h3>
           <div className="space-y-16">
@@ -313,37 +342,11 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Packages */}
-        <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
-          <SectionTitle kicker={packages.kicker} title={packages.title} />
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {packages.items.map((p) => (
-              <div key={p.title} className="flex flex-col rounded-3xl bg-ink p-6 text-white">
-                <div className="flex items-start justify-between">
-                  <span className="text-copper-light">
-                    <Icon name={p.icon} className="size-7" />
-                  </span>
-                  <span className="rounded-full border border-white/20 px-3 py-1 text-xs font-semibold text-white/80">
-                    {p.time}
-                  </span>
-                </div>
-                <h3 className="mt-6 font-serif text-2xl font-medium">{p.title}</h3>
-                <p className="mt-3 flex-1 text-sm leading-relaxed text-white/70">{p.text}</p>
-                <a
-                  href={mailto(p.title)}
-                  className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-copper-light hover:text-white"
-                >
-                  {packages.cta} <Icon name="arrow" className="size-4" />
-                </a>
-              </div>
-            ))}
-          </div>
-        </section>
-
         {/* Results */}
         <section id="results" className="bg-stone/60">
           <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
             <SectionTitle kicker={results.kicker} title={results.title} />
+            <p className="-mt-6 mb-10 max-w-3xl text-muted">{results.note}</p>
             <div className="grid gap-px overflow-hidden rounded-3xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
               {results.items.map((r) => (
                 <div key={r.title} className="bg-paper p-7">
@@ -512,25 +515,16 @@ export default function Home() {
                 >
                   LinkedIn
                 </a>
+                <a href={asset("/privacy/")} className="text-center text-xs text-white/75 underline hover:text-white">
+                  {contact.privacy}
+                </a>
               </div>
             </div>
           </div>
         </section>
       </main>
 
-      <footer className="border-t border-line">
-        <div className="mx-auto flex max-w-6xl flex-col gap-8 px-4 py-10 sm:px-6 md:flex-row md:items-center md:justify-between">
-          <Logo />
-          <nav aria-label={ui.footerMenu} className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted">
-            {nav.map((n) => (
-              <a key={n.href} href={n.href} className="hover:text-ink">
-                {n.label}
-              </a>
-            ))}
-          </nav>
-          <p className="text-sm text-muted">© {new Date().getFullYear()} {site.name}</p>
-        </div>
-      </footer>
+      <SiteFooter />
     </>
   );
 }

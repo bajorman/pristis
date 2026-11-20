@@ -2,72 +2,113 @@
 
 import { useId, useState } from "react";
 
-// Rough estimate of the tax saved through the Polish R&D tax relief (ulga B+R).
-// Staff costs of R&D work can be deducted at 200%, other qualifying costs
-// (materials, equipment, expert opinions, depreciation...) at 100%. The saving
-// is the extra deduction times the tax rate. It ignores the income limit and
-// the carry-forward, which the note under the result mentions.
+// Simulation of the tax effect of the Polish R&D tax relief (ulga B+R) for a
+// single tax year. Qualifying staff costs of R&D work can be deducted at 200%,
+// other qualifying costs at 100%; the effect is the extra deduction times a
+// flat tax rate. Only flat-rate regimes are offered: under the progressive PIT
+// scale the effect depends on income across the brackets, which this simple
+// model does not capture. It assumes enough taxable income to use the whole
+// deduction; the notes under the result say so.
 const rates = [
   { id: "cit19", label: "CIT 19%", rate: 0.19 },
-  { id: "cit9", label: "CIT 9% (small taxpayer)", rate: 0.09 },
+  { id: "cit9", label: "CIT 9%", rate: 0.09 },
   { id: "pit19", label: "PIT flat 19%", rate: 0.19 },
-  { id: "pit32", label: "PIT scale, 32%", rate: 0.32 },
 ];
+
+const MAX = 1_000_000_000;
 
 const pln = new Intl.NumberFormat("en-GB", { style: "currency", currency: "PLN", maximumFractionDigits: 0 });
 
-function parse(value: string) {
-  const n = Number(value.replace(/\s/g, "").replace(",", "."));
-  return Number.isFinite(n) && n > 0 ? n : 0;
+// Whole PLN amounts only: digits, optionally grouped in thousands with spaces,
+// commas or dots ("500000", "500 000", "500,000"). Anything else is an error,
+// so "1,000" is never read as 1 and "12,5" is not silently accepted.
+type Parsed = { value: number; error?: string };
+
+function parseAmount(raw: string): Parsed {
+  const v = raw.trim();
+  if (v === "") return { value: 0, error: "Enter an amount (0 if none)." };
+  if (/^-/.test(v)) return { value: 0, error: "The amount cannot be negative." };
+  const grouped = /^\d{1,3}([  ,.]\d{3})+$/.test(v);
+  if (!grouped && !/^\d+$/.test(v)) {
+    return { value: 0, error: "Use whole PLN, e.g. 500000 or 500 000." };
+  }
+  const n = Number(v.replace(/[  ,.]/g, ""));
+  if (n > MAX) return { value: 0, error: "Amounts above PLN 1 billion are not supported." };
+  return { value: n };
 }
 
 export default function BrCalculator() {
   const id = useId();
-  const [staff, setStaff] = useState("500000");
-  const [other, setOther] = useState("100000");
+  const [staff, setStaff] = useState("500 000");
+  const [other, setOther] = useState("100 000");
   const [rateId, setRateId] = useState("cit19");
 
-  const rate = rates.find((r) => r.id === rateId)!.rate;
-  const deduction = 2 * parse(staff) + parse(other);
-  const saving = deduction * rate;
-  const fiveYears = saving * 5;
+  const staffParsed = parseAmount(staff);
+  const otherParsed = parseAmount(other);
+  const valid = !staffParsed.error && !otherParsed.error;
 
-  const field =
-    "mt-2 w-full rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-lg text-white tabular-nums outline-none transition focus:border-copper-light focus:bg-white/10";
+  const rate = rates.find((r) => r.id === rateId)!.rate;
+  const deduction = 2 * staffParsed.value + otherParsed.value;
+  const effect = deduction * rate;
+
+  const field = (error?: string) =>
+    `mt-2 w-full rounded-xl border bg-white/5 px-4 py-3 text-lg text-white tabular-nums outline-none transition focus:bg-white/10 ${
+      error ? "border-red-300 focus:border-red-300" : "border-white/15 focus:border-copper-light"
+    }`;
 
   return (
     <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-6 sm:p-8">
-      <p className="text-sm font-bold uppercase tracking-[0.18em] text-copper-light">R&amp;D relief calculator</p>
-      <p className="mt-2 text-white/70">Estimated tax saving for one year under the Polish R&amp;D tax relief.</p>
+      <p className="text-sm font-bold uppercase tracking-[0.18em] text-copper-light">R&amp;D relief simulation</p>
+      <p className="mt-2 text-white/70">
+        An illustration of the possible tax effect for one tax year under the Polish R&amp;D tax relief.
+      </p>
 
       <div className="mt-6 grid gap-5">
-        <label className="block text-sm font-semibold text-white/85" htmlFor={`${id}-staff`}>
-          Staff costs of R&amp;D work (per year, PLN)
+        <div>
+          <label className="block text-sm font-semibold text-white/85" htmlFor={`${id}-staff`}>
+            Qualifying staff costs of R&amp;D work (one year, whole PLN)
+          </label>
           <input
             id={`${id}-staff`}
             inputMode="numeric"
-            className={field}
+            autoComplete="off"
+            aria-invalid={!!staffParsed.error}
+            aria-describedby={`${id}-staff-hint`}
+            className={field(staffParsed.error)}
             value={staff}
             onChange={(e) => setStaff(e.target.value)}
           />
-        </label>
-        <label className="block text-sm font-semibold text-white/85" htmlFor={`${id}-other`}>
-          Other qualifying costs (equipment, materials, expert opinions, PLN)
+          <p id={`${id}-staff-hint`} className={`mt-1.5 text-xs ${staffParsed.error ? "text-red-200" : "text-white/45"}`}>
+            {staffParsed.error ??
+              "Salaries and social contributions of employees, in proportion to their time on R&D. Deducted at 200%."}
+          </p>
+        </div>
+        <div>
+          <label className="block text-sm font-semibold text-white/85" htmlFor={`${id}-other`}>
+            Other qualifying costs (one year, whole PLN)
+          </label>
           <input
             id={`${id}-other`}
             inputMode="numeric"
-            className={field}
+            autoComplete="off"
+            aria-invalid={!!otherParsed.error}
+            aria-describedby={`${id}-other-hint`}
+            className={field(otherParsed.error)}
             value={other}
             onChange={(e) => setOther(e.target.value)}
           />
-        </label>
+          <p id={`${id}-other-hint`} className={`mt-1.5 text-xs ${otherParsed.error ? "text-red-200" : "text-white/45"}`}>
+            {otherParsed.error ??
+              "E.g. materials, specialist equipment, expert opinions, depreciation, patents. Deducted at 100%."}
+          </p>
+        </div>
         <fieldset>
           <legend className="text-sm font-semibold text-white/85">Tax regime</legend>
-          <div className="mt-2 grid grid-cols-2 gap-2">
+          <div className="mt-2 grid grid-cols-3 gap-2">
             {rates.map((r) => (
               <label
                 key={r.id}
-                className={`cursor-pointer rounded-xl border px-3 py-2.5 text-sm transition ${
+                className={`cursor-pointer rounded-xl border px-3 py-2.5 text-center text-sm transition has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-copper-light ${
                   rateId === r.id
                     ? "border-copper-light bg-copper-light/15 text-white"
                     : "border-white/15 text-white/70 hover:border-white/40"
@@ -85,20 +126,29 @@ export default function BrCalculator() {
               </label>
             ))}
           </div>
+          {rateId === "cit9" && (
+            <p className="mt-2 text-xs text-white/55">
+              CIT 9% applies to small taxpayers (sales revenue up to EUR 2 million in the previous year) and to
+              companies in their first tax year, subject to statutory conditions.
+            </p>
+          )}
         </fieldset>
       </div>
 
       <div className="mt-8 border-t border-white/10 pt-6" aria-live="polite">
-        <p className="text-sm text-white/70">Estimated tax saving per year</p>
-        <p className="mt-1 font-serif text-4xl font-semibold text-white tabular-nums sm:text-5xl">{pln.format(saving)}</p>
-        <p className="mt-3 text-sm text-white/70">
-          Additional deduction: {pln.format(deduction)}. With corrections for 5 years back — up to{" "}
-          <span className="font-semibold text-copper-light">{pln.format(fiveYears)}</span>.
+        <p className="text-sm text-white/70">Possible tax effect for this tax year</p>
+        <p className="mt-1 font-serif text-4xl font-semibold text-white tabular-nums sm:text-5xl">
+          {valid ? pln.format(effect) : "—"}
         </p>
+        {valid && (
+          <p className="mt-3 text-sm text-white/70">Additional deduction from the tax base: {pln.format(deduction)}.</p>
+        )}
       </div>
       <p className="mt-5 text-xs leading-relaxed text-white/45">
-        An indicative estimate, not tax advice. The deduction cannot exceed taxable income; any unused part can be
-        carried forward for the next 6 years. Which costs qualify is confirmed by an audit.
+        A simulation for one tax year, not tax advice. It assumes the costs qualify and that taxable income is high
+        enough to use the whole deduction; an unused part can be carried forward to the next six tax years. Whether
+        the work and costs qualify depends on the nature of the work, its documentation and the taxpayer&apos;s
+        situation, and is assessed by a licensed tax adviser. Progressive PIT is not modelled.
       </p>
     </div>
   );
