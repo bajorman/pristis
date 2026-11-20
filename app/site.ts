@@ -31,7 +31,7 @@ export const hero = {
   // The words in `accent` are set in italic accent colour after `title`.
   title: "Build engineering organizations",
   accent: "that scale.",
-  lead: "I help CTOs, VPs of Engineering, startups and investors make better technical decisions – from the first MVP to a mature, cloud-native organization.",
+  lead: "A hands-on partner for technology leaders: from organizing teams and projects to scaling agile and putting AI into production – 20+ years of building organizations that deliver.",
   primary: "Book an intro call",
   secondary: "See services",
 };
