@@ -359,7 +359,7 @@ export const about = {
     "ESG: double materiality assessment (ESRS)",
   ],
   nameNote:
-    "Why the name? Pristis is the sawfish — it cuts precisely through whatever is unnecessary. That is how I approach projects.",
+    "Why the name? In Latin, pristis was the name for a fast-sailing warship. It was also the name of one of Aeneas's ships in Virgil's Aeneid. That is how I see my role: helping you set the course and steer the change swiftly to its destination.",
   linkedin: "LinkedIn profile",
 };
 

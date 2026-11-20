@@ -1,18 +1,34 @@
-// Sawfish (Pristis) rostrum as a mark: a blade with teeth on both sides.
-// The same drawing is saved as public/images/icon.svg for the favicon.
-const teeth = [11, 16, 21, 26];
+import { useId } from "react";
 
+// Latin "pristis" was a fast-sailing warship: the mark is a sleek hull with a
+// ram at the bow, a sail leaning forward, and its wake on the water. The same
+// drawing is saved as public/images/icon.svg for the favicon.
 export function LogoMark({ className = "size-9" }: { className?: string }) {
+  const clip = useId();
   return (
     <svg viewBox="0 0 40 40" className={className} aria-hidden="true">
-      <rect width="40" height="40" rx="9" fill="var(--navy)" />
-      <rect x="6" y="18.5" width="28" height="3" rx="1.5" fill="var(--copper-light)" />
-      {teeth.map((x) => (
-        <g key={x} fill="var(--copper-light)">
-          <path d={`M${x} 18.6 L${x + 1.6} 14.2 L${x + 3.2} 18.6Z`} />
-          <path d={`M${x} 21.4 L${x + 1.6} 25.8 L${x + 3.2} 21.4Z`} />
+      <defs>
+        <clipPath id={clip}>
+          <rect width="40" height="40" rx="9" />
+        </clipPath>
+      </defs>
+      <g clipPath={`url(#${clip})`}>
+        <rect width="40" height="40" fill="var(--navy)" />
+        <g fill="var(--copper-light)">
+          {/* Sail, filled by the wind and leaning forward */}
+          <path d="M14.5 23.5 C16 15 21 8.5 30.5 5 C28.2 11 28 17.5 31.5 23.5 Z" />
+          {/* Hull with a ram at the bow (right) */}
+          <path d="M7 25 H33.5 L39 23 L33.5 28.2 H11.5 Q8 27.3 7 25 Z" />
         </g>
-      ))}
+        <g fill="none" stroke="var(--copper-light)" strokeLinecap="round">
+          {/* Bow wave */}
+          <path d="M33 30 Q35.5 31.2 38.5 30" strokeWidth="1.3" />
+          {/* Speed lines behind the stern */}
+          <path d="M1 25.5 H5.5 M2.5 28.5 H9 M0.5 31.5 H6" strokeWidth="1.3" opacity="0.6" />
+          {/* Wake */}
+          <path d="M12 31 Q22 33 33 30" strokeWidth="1.1" opacity="0.45" />
+        </g>
+      </g>
     </svg>
   );
 }

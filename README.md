@@ -27,7 +27,9 @@ npm run lint
 - `app/components/BrCalculator.tsx` – estimate of the R&D relief (ulga B+R)
   tax saving: staff costs at 200%, other qualifying costs at 100%, times the
   chosen tax rate
-- `app/components/Logo.tsx` – sawfish-rostrum mark and wordmark; the same mark
+- `app/components/Logo.tsx` – ship mark (Latin *pristis*: a fast-sailing
+  warship; sleek hull with a ram, forward-leaning sail, wake) and wordmark;
+  the same mark
   is `public/images/icon.svg` (favicon)
 - `app/components/Icon.tsx` – outline icons
 - `app/globals.css` – colour tokens (paper, navy, copper) and fonts
