@@ -49,8 +49,7 @@ export default function Privacy() {
 
         <Section title="Who is responsible for your data">
           <p>
-            The controller of your personal data is {company.legalName}, trading as {site.name},{" "}
-            {company.address}, NIP {company.nip}, REGON {company.regon}, entered in the {company.register}. You can
+            The controller of your personal data is {company.legalName}, trading as {site.name}, NIP {company.nip}, REGON {company.regon}, entered in the {company.register}. You can
             contact me at {email}.
           </p>
         </Section>
