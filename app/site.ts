@@ -6,7 +6,7 @@ export const site = {
   email: "pawel.bajorek@pristismanagement.com",
   linkedin: "https://www.linkedin.com/in/pbajorek/",
   description:
-    "Project management and Scaled Agile (SAFe) implementation, with the methodology tailored to your organisation. Also AI adoption, R&D tax relief in Poland, interim CTO and technical due diligence.",
+    "Consulting and mentoring for technology leaders: project management and Scaled Agile, AI adoption, interim CTO, technical due diligence and R&D tax relief in Poland.",
 };
 
 // Path to a file in public/, prefixed with the base path when the site is
@@ -27,12 +27,12 @@ export const nav = [
 ];
 
 export const hero = {
-  eyebrow: "Project management · Scaled Agile · AI",
+  eyebrow: "Consulting & mentoring for technology leaders",
   // The words in `accent` are set in italic accent colour after `title`.
-  title: "Projects and teams that deliver",
-  accent: "results.",
-  lead: "I set up project management that fits your organisation — PRINCE2, PMI, agile or a mix of them — and roll out Scaled Agile that actually works. I also help put AI into production. 20+ years of experience at HSBC, UBS, Sabre and Hitachi Energy.",
-  primary: "Book a 30-minute call",
+  title: "Build engineering organizations",
+  accent: "that scale.",
+  lead: "I help CTOs, VPs of Engineering, startups and investors make better technical decisions – from the first MVP to a mature, cloud-native organization.",
+  primary: "Book an intro call",
   secondary: "See services",
 };
 
@@ -79,9 +79,9 @@ export type Flagship = {
 
 // The two main services, shown first and largest in the services section.
 export const flagship = {
-  kicker: "Flagship services",
-  title: "Proven methods,",
-  accent: "pragmatically applied",
+  kicker: "Services",
+  title: "From strategy to delivery,",
+  accent: "end to end",
   items: [
     {
       title: "Project management and methodology implementation",
@@ -345,7 +345,7 @@ export const about = {
   role: "Founder, Pristis Management",
   text: [
     "For more than 20 years I have been building software and the teams that create it. I started as a software engineer and architect at Comarch, then led programmes at HSBC, UBS and Sabre, where we worked with a Google team on machine-learning solutions for aviation. As Software Engineering Director at Hitachi Energy, I led a global organisation of more than 300 engineers.",
-    "Project management is at the core of what I do. I am certified in PRINCE2, PMI and Scrum, and I have rolled out Scaled Agile in several organisations. I don't defend any single method — I pick and tailor the one that fits the company.",
+    "Project management is one of my core strengths: I am certified in PRINCE2, PMI and Scrum, and I have rolled out Scaled Agile in several organisations. I don't defend any single method — I pick and tailor the one that fits the company.",
     "I am a mathematician (AGH University) and hold an MBA. I work personally with every client — no handing the project over to juniors, and no slide decks that change nothing.",
   ],
   credentialsTitle: "Education and certifications",

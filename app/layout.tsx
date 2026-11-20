@@ -17,7 +17,7 @@ const fraunces = Fraunces({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name} — project management, Scaled Agile and AI`,
+    default: `${site.name} — consulting & mentoring for technology leaders`,
     template: `%s — ${site.name}`,
   },
   description: site.description,
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_GB",
     siteName: site.name,
-    title: `${site.name} — projects and teams that deliver results`,
+    title: `${site.name} — build engineering organizations that scale`,
     description: site.description,
     images: asset("/images/og.jpg"),
   },
