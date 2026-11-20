@@ -41,6 +41,12 @@ export const hero = {
   lead: "A hands-on partner for technology leaders: from organising teams and projects to scaling agile and building AI systems that work in production – 20+ years of building organisations that deliver.",
   primary: "Request a 30-minute intro call",
   secondary: "See services",
+  // Two quick ways in, shown under the buttons; both lead to the starter packages.
+  entriesTitle: "Two ways to start",
+  entries: [
+    { question: "Project late or over budget?", offer: "IT project rescue", time: "2 weeks", icon: "lifebuoy" },
+    { question: "AI already in use?", offer: "AI system health check", time: "2 weeks", icon: "pulse" },
+  ],
 };
 
 export const facts = [
@@ -99,7 +105,7 @@ export const flagship = {
     {
       title: "Project management and methodology implementation",
       tagline: "The method fits your organisation — not the other way round.",
-      text: "I set up project management that matches how your company really works: PRINCE2, PMI practices, and agile or hybrid delivery — or a tailored combination of them. I hold certifications in PRINCE2, PMI and Scrum and I am not a zealot of any — I choose what works for you, then make it stick.",
+      text: "I set up project management that matches how your company really works: PRINCE2, PMI practices, and agile or hybrid delivery — or a tailored combination of them. I am certified in PRINCE2 and Scrum, earned the PMI's PMP® in 2011, and I am not a zealot of any approach — I choose what works for you, then make it stick.",
       points: [
         "Assessment of how projects are delivered today",
         "Choosing and tailoring the methodology (PRINCE2, PMI, Scrum, Kanban, hybrid)",
@@ -332,7 +338,7 @@ export const aiRd = {
     "Whether the relief applies depends on the nature of the work, its documentation and your tax situation. A licensed Polish tax adviser assesses eligibility and advises on the claim; I provide the technical analysis and the evidence.",
   ],
   points: [
-    "Qualifying R&D staff costs may be deducted at 200%, other qualifying costs at 100%",
+    "Qualifying R&D staff costs may be deducted at 200%, other qualifying costs at 100% (standard rates)",
     "Past tax years that are not yet time-barred can be reviewed, each assessed separately",
     "Documentation kept as the work happens, not after the fact",
   ],
@@ -516,14 +522,14 @@ export const about = {
     "For more than 20 years I have been building software and the teams that create it. I started as a software engineer and architect at a large software house, then led programmes at two global banks and at a global airline technology company. As Software Engineering Director at a global energy technology company, I led an organisation of more than 300 engineers.",
     "My background in applied mathematics lets me understand AI from the inside — how neural networks learn, why they fail, and where their limits are. I combine that with hands-on knowledge of building production systems on foundation models: retrieval over company knowledge, agents, evaluation, fine-tuning, and keeping cost and latency under control. In airline technology, I worked with a global technology partner on machine-learning products, and I led the creation of an AI-based solution for aircraft weight and balance.",
     "My approach to leadership is simple. Get the right people in the right roles, be candid with them, and keep strategy clear enough that everyone can act on it. Then manage the system, not the people: give teams real ownership with clear limits on decisions, and design the organisation so that work flows fast — with team structure and architecture shaped together, and no team carrying more than it can handle.",
-    "Project management is one of my core strengths: I am certified in PRINCE2, PMI and Scrum, and I have rolled out Scaled Agile in several organisations. I don't defend any single method — I pick and tailor the one that fits the company.",
+    "Project management is one of my core strengths: I am certified in PRINCE2 and Scrum, earned the PMP® in 2011, and I have rolled out Scaled Agile in several organisations. I don't defend any single method — I pick and tailor the one that fits the company.",
     "I am a mathematician (AGH University) and hold an MBA. I work personally with every client — no handing the project over to juniors, and no slide decks that change nothing.",
   ],
   credentialsTitle: "Education and certifications",
   credentials: [
     "MBA — WSB University",
     "MSc Applied Mathematics — AGH University",
-    "PMP® — Project Management Institute (2011)",
+    "PMP® — Project Management Institute (earned 2011)",
     "PRINCE2® Practitioner",
     "Professional Scrum Master I",
     "ITIL® Foundation",

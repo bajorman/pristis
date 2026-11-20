@@ -81,6 +81,27 @@ export default function Home() {
                   {hero.secondary}
                 </a>
               </div>
+
+              <p className="mt-10 text-xs font-bold uppercase tracking-[0.22em] text-muted">{hero.entriesTitle}</p>
+              <div className="mt-3 grid max-w-xl gap-3 sm:grid-cols-2">
+                {hero.entries.map((e) => (
+                  <a
+                    key={e.offer}
+                    href="#packages"
+                    className="group flex items-start gap-3 rounded-2xl border border-line bg-white/50 p-4 transition hover:border-copper/60 hover:bg-white"
+                  >
+                    <span className="mt-0.5 shrink-0 text-copper">
+                      <Icon name={e.icon} className="size-5" />
+                    </span>
+                    <span>
+                      <span className="block text-sm text-muted">{e.question}</span>
+                      <span className="mt-0.5 block font-semibold text-ink group-hover:text-copper">
+                        {e.offer} · {e.time}
+                      </span>
+                    </span>
+                  </a>
+                ))}
+              </div>
             </div>
 
             <div className="relative mx-auto w-full max-w-sm lg:max-w-none">
@@ -154,7 +175,7 @@ export default function Home() {
             kicker={flagship.kicker}
             title={
               <>
-                {flagship.title} <em className="text-copper">{flagship.accent}</em>
+                {`${flagship.title} `}<em className="text-copper">{flagship.accent}</em>
               </>
             }
           />
@@ -263,7 +284,7 @@ export default function Home() {
               kicker={aiExpertise.kicker}
               title={
                 <>
-                  {aiExpertise.title} <em className="text-copper">{aiExpertise.accent}</em>
+                  {`${aiExpertise.title} `}<em className="text-copper">{aiExpertise.accent}</em>
                 </>
               }
             />
@@ -292,7 +313,7 @@ export default function Home() {
             <div className="mb-8 mt-20">
               <Kicker>{aiPrinciples.kicker}</Kicker>
               <h3 className="mt-3 font-serif text-3xl font-medium tracking-tight sm:text-4xl">
-                {aiPrinciples.title} <em className="text-copper">{aiPrinciples.accent}</em>
+                {`${aiPrinciples.title} `}<em className="text-copper">{aiPrinciples.accent}</em>
               </h3>
             </div>
             <ol className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -313,7 +334,7 @@ export default function Home() {
             <div>
               <Kicker light>{aiRd.kicker}</Kicker>
               <h2 className="mt-3 font-serif text-4xl font-medium leading-[1.08] tracking-tight sm:text-5xl">
-                {aiRd.title} <em className="text-copper-light">{aiRd.accent}</em>
+                {`${aiRd.title} `}<em className="text-copper-light">{aiRd.accent}</em>
               </h2>
               {aiRd.text.map((t) => (
                 <p key={t} className="mt-6 text-lg leading-relaxed text-white/75">

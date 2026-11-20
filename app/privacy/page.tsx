@@ -62,18 +62,26 @@ export default function Privacy() {
           </p>
           <ul className="list-disc space-y-2 pl-5">
             <li>
-              To reply to your enquiry and to take steps at your request before entering into a contract — Article
-              6(1)(b) GDPR.
+              If you contact me on behalf of a company or another organisation, I process your data to reply to the
+              enquiry, to discuss and carry out cooperation with that organisation, and to keep in touch with
+              business contacts — my legitimate interest, Article 6(1)(f) GDPR.
             </li>
             <li>
-              To keep in touch with business contacts and to establish, pursue or defend claims — my legitimate
-              interest, Article 6(1)(f) GDPR.
+              If you contact me on your own behalf, for example as a sole trader or an individual client, I process
+              your data to reply and to take steps at your request before entering into a contract, and then to
+              perform it — Article 6(1)(b) GDPR.
             </li>
             <li>
-              If we work together: to perform the contract (Article 6(1)(b) GDPR) and to meet tax and accounting
-              obligations (Article 6(1)(&#8204;c) GDPR).
+              To establish, pursue or defend claims — my legitimate interest, Article 6(1)(f) GDPR.
+            </li>
+            <li>
+              To meet tax and accounting obligations once we work together — Article 6(1)(&#8204;c) GDPR.
             </li>
           </ul>
+          <p>
+            Where processing is based on my legitimate interest, you can object to it at any time on grounds
+            relating to your particular situation.
+          </p>
           <p>
             Providing your data is voluntary, but without it I cannot reply to you. I do not use your data for
             automated decision-making or profiling.
@@ -86,8 +94,9 @@ export default function Privacy() {
             your browser: the amounts you enter are not sent to me or stored anywhere.
           </p>
           <p>
-            The website is hosted on GitHub Pages (GitHub, Inc.), which may record technical data such as IP
-            addresses in server logs to deliver and secure the service. See the{" "}
+            The website is hosted on GitHub Pages (GitHub, Inc.). When you visit it, GitHub records visitors&apos; IP
+            addresses for security purposes, as stated in its documentation. I do not have access to these logs and
+            do not use them. See the{" "}
             <a
               href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement"
               target="_blank"
@@ -117,7 +126,7 @@ export default function Privacy() {
           <p>
             Where a service provider processes data outside the European Economic Area, the transfer is based on an
             adequacy decision of the European Commission (such as the EU–US Data Privacy Framework) or on standard
-            contractual clauses.
+            contractual clauses. You can obtain a copy of these safeguards by writing to {email}.
           </p>
         </Section>
 

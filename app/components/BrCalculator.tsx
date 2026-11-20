@@ -99,7 +99,7 @@ export default function BrCalculator() {
           />
           <p id={`${id}-other-hint`} className={`mt-1.5 text-xs ${otherParsed.error ? "text-red-200" : "text-white/45"}`}>
             {otherParsed.error ??
-              "E.g. materials, specialist equipment, expert opinions, depreciation, patents. Deducted at 100%."}
+              "E.g. materials, specialist equipment, depreciation, patents, and expert opinions or services bought from scientific institutions such as universities or research institutes. Deducted at 100%."}
           </p>
         </div>
         <fieldset>
@@ -108,7 +108,7 @@ export default function BrCalculator() {
             {rates.map((r) => (
               <label
                 key={r.id}
-                className={`cursor-pointer rounded-xl border px-3 py-2.5 text-center text-sm transition has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-copper-light ${
+                className={`cursor-pointer rounded-xl border px-3 py-2.5 text-center text-sm transition focus-within:outline focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-copper-light ${
                   rateId === r.id
                     ? "border-copper-light bg-copper-light/15 text-white"
                     : "border-white/15 text-white/70 hover:border-white/40"
@@ -129,7 +129,9 @@ export default function BrCalculator() {
           {rateId === "cit9" && (
             <p className="mt-2 text-xs text-white/55">
               CIT 9% applies to small taxpayers (sales revenue up to EUR 2 million in the previous year) and to
-              companies in their first tax year, subject to statutory conditions.
+              companies in their first tax year, and only while revenue in the current tax year does not exceed the
+              PLN equivalent of EUR 2 million. It covers income other than capital gains, subject to further
+              statutory conditions.
             </p>
           )}
         </fieldset>
@@ -145,7 +147,8 @@ export default function BrCalculator() {
         )}
       </div>
       <p className="mt-5 text-xs leading-relaxed text-white/45">
-        A simulation for one tax year, not tax advice. It assumes the costs qualify and that taxable income is high
+        A simulation for one tax year for a standard taxpayer without research and development centre (CBR) status,
+        not tax advice. It assumes the costs qualify and that taxable income is high
         enough to use the whole deduction; an unused part can be carried forward to the next six tax years. Whether
         the work and costs qualify depends on the nature of the work, its documentation and the taxpayer&apos;s
         situation, and is assessed by a licensed tax adviser. Progressive PIT is not modelled.
