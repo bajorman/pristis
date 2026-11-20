@@ -5,8 +5,11 @@ import Logo from "./components/Logo";
 import SiteHeader from "./components/SiteHeader";
 import {
   about,
+  aiExpertise,
+  aiPrinciples,
   aiRd,
   asset,
+  bookshelf,
   companies,
   contact,
   facts,
@@ -20,6 +23,7 @@ import {
   pillars,
   problems,
   results,
+  orgPrinciples,
   site,
   steps,
   ui,
@@ -133,7 +137,7 @@ export default function Home() {
         <section className="bg-stone/60">
           <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-24">
             <SectionTitle kicker={problems.kicker} title={problems.title} />
-            <div className="grid gap-6 md:grid-cols-2">
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               {problems.items.map((p) => (
                 <figure key={p.q} className="flex flex-col rounded-3xl bg-paper p-7">
                   <blockquote className="font-serif text-xl leading-snug text-ink">{p.q}</blockquote>
@@ -154,7 +158,7 @@ export default function Home() {
               </>
             }
           />
-          <div className="grid gap-6 lg:grid-cols-2">
+          <div className="grid gap-6 lg:grid-cols-3">
             {flagship.items.map((f, i) => (
               <article
                 key={f.title}
@@ -166,7 +170,7 @@ export default function Home() {
                   </span>
                   <span className="font-serif text-lg text-white/50">0{i + 1}</span>
                 </div>
-                <h3 className="mt-6 font-serif text-3xl font-medium leading-tight">{f.title}</h3>
+                <h3 className="mt-6 font-serif text-2xl font-medium leading-tight sm:text-3xl lg:text-2xl">{f.title}</h3>
                 <p className="mt-3 font-serif text-lg italic text-copper-light">{f.tagline}</p>
                 <p className="mt-5 leading-relaxed text-white/75">{f.text}</p>
                 <ul className="mt-6 flex-1 space-y-2.5">
@@ -223,6 +227,57 @@ export default function Home() {
           </div>
         </section>
 
+        {/* AI expertise and how I approach AI */}
+        <section id="ai" className="bg-stone/60">
+          <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-24">
+            <SectionTitle
+              kicker={aiExpertise.kicker}
+              title={
+                <>
+                  {aiExpertise.title} <em className="text-copper">{aiExpertise.accent}</em>
+                </>
+              }
+            />
+            <div className="grid gap-6 lg:grid-cols-2">
+              {aiExpertise.items.map((e) => (
+                <article key={e.title} className="grain flex flex-col rounded-[2rem] bg-navy p-7 text-white sm:p-9">
+                  <span className="inline-flex self-start rounded-2xl bg-copper-light p-3 text-ink">
+                    <Icon name={e.icon} />
+                  </span>
+                  <h3 className="mt-6 font-serif text-3xl font-medium leading-tight">{e.title}</h3>
+                  <p className="mt-4 text-lg leading-relaxed text-white/80">{e.text}</p>
+                  <ul className="mt-6 grid gap-2.5 sm:grid-cols-2">
+                    {e.points.map((pt) => (
+                      <li key={pt} className="flex gap-3 text-[0.95rem] text-white/90">
+                        <span className="mt-0.5 shrink-0 text-copper-light">
+                          <Icon name="check" className="size-5" />
+                        </span>
+                        {pt}
+                      </li>
+                    ))}
+                  </ul>
+                </article>
+              ))}
+            </div>
+
+            <div className="mb-8 mt-20">
+              <Kicker>{aiPrinciples.kicker}</Kicker>
+              <h3 className="mt-3 font-serif text-3xl font-medium tracking-tight sm:text-4xl">
+                {aiPrinciples.title} <em className="text-copper">{aiPrinciples.accent}</em>
+              </h3>
+            </div>
+            <ol className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+              {aiPrinciples.items.map((p, i) => (
+                <li key={p.title} className="flex flex-col rounded-3xl bg-paper p-6">
+                  <span className="font-serif text-lg text-copper">0{i + 1}</span>
+                  <h3 className="mt-3 font-serif text-xl font-medium leading-snug">{p.title}</h3>
+                  <p className="mt-3 text-[0.95rem] leading-relaxed text-muted">{p.text}</p>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </section>
+
         {/* AI + R&D relief */}
         <section id="ai-rd" className="grain bg-navy text-white">
           <div className="mx-auto grid max-w-6xl gap-12 px-4 py-20 sm:px-6 sm:py-28 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
@@ -261,7 +316,7 @@ export default function Home() {
         {/* Packages */}
         <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
           <SectionTitle kicker={packages.kicker} title={packages.title} />
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {packages.items.map((p) => (
               <div key={p.title} className="flex flex-col rounded-3xl bg-ink p-6 text-white">
                 <div className="flex items-start justify-between">
@@ -328,6 +383,20 @@ export default function Home() {
               ))}
             </div>
           </div>
+
+          <div className="mb-8 mt-20">
+            <Kicker>{orgPrinciples.kicker}</Kicker>
+            <h3 className="mt-3 font-serif text-3xl font-medium tracking-tight sm:text-4xl">{orgPrinciples.title}</h3>
+          </div>
+          <ol className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {orgPrinciples.items.map((p, i) => (
+              <li key={p.title} className="flex flex-col rounded-3xl border border-line bg-white/50 p-6">
+                <span className="font-serif text-lg text-copper">0{i + 1}</span>
+                <h4 className="mt-3 font-serif text-xl font-medium leading-snug">{p.title}</h4>
+                <p className="mt-3 text-[0.95rem] leading-relaxed text-muted">{p.text}</p>
+              </li>
+            ))}
+          </ol>
         </section>
 
         {/* About */}
@@ -374,6 +443,23 @@ export default function Home() {
                 {about.linkedin} <Icon name="arrow" className="size-4" />
               </a>
             </div>
+          </div>
+        </section>
+
+        {/* Bookshelf */}
+        <section className="bg-stone/60">
+          <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-24">
+            <SectionTitle kicker={bookshelf.kicker} title={bookshelf.title} />
+            <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
+              {bookshelf.items.map((b) => (
+                <li key={b.title} className="flex flex-col rounded-3xl bg-paper p-6">
+                  <span aria-hidden="true" className="h-1.5 w-10 rounded-full bg-copper" />
+                  <h3 className="mt-5 font-serif text-xl font-medium italic leading-snug">{b.title}</h3>
+                  <p className="mt-1 text-sm font-semibold text-ink/70">{b.author}</p>
+                  <p className="mt-3 text-[0.95rem] leading-relaxed text-muted">{b.text}</p>
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
 

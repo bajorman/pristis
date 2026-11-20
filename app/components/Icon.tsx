@@ -53,6 +53,8 @@ const paths: Record<string, React.ReactNode> = {
       <path d="M8 11h1.25M14.75 11H16M2 17.5h20" />
     </>
   ),
+  flow: <path d="M3 6h10M3 12h15M3 18h10M15 8l4 4-4 4" />,
+  pulse:<path d="M3 12h4l2.5-6 4 12 2.5-6H21" />,
   check: <path d="m5 12.5 4.5 4.5L19 7.5" />,
   arrow: <path d="M5 12h14M13 6l6 6-6 6" />,
 };
