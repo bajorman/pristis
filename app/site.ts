@@ -44,8 +44,8 @@ export const hero = {
   // Two quick ways in, shown under the buttons; both lead to the starter packages.
   entriesTitle: "Two ways to start",
   entries: [
-    { question: "Project late or over budget?", offer: "IT project rescue", time: "2 weeks", icon: "lifebuoy" },
-    { question: "AI already in use?", offer: "AI system health check", time: "2 weeks", icon: "pulse" },
+    { offer: "IT project rescue", note: "Late or over-budget projects", icon: "lifebuoy" },
+    { offer: "AI system health check", note: "AI already in use", icon: "pulse" },
   ],
 };
 

@@ -94,10 +94,8 @@ export default function Home() {
                       <Icon name={e.icon} className="size-5" />
                     </span>
                     <span>
-                      <span className="block text-sm text-muted">{e.question}</span>
-                      <span className="mt-0.5 block font-semibold text-ink group-hover:text-copper">
-                        {e.offer} · {e.time}
-                      </span>
+                      <span className="block text-sm text-muted">{e.note}</span>
+                      <span className="mt-0.5 block font-semibold text-ink group-hover:text-copper">{e.offer}</span>
                     </span>
                   </a>
                 ))}
