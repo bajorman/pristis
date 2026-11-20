@@ -2,8 +2,8 @@ import { asset, company, nav, site, ui } from "../site";
 import Logo from "./Logo";
 
 // Footer shared by the home page and the privacy page. Menu links point to the
-// home page sections, so they also work from /privacy/. The business details
-// are the ones registered in CEIDG.
+// home page sections, so they also work from /privacy/. The business name is
+// the one registered in CEIDG.
 export default function SiteFooter() {
   const home = asset("/");
   return (
@@ -27,9 +27,6 @@ export default function SiteFooter() {
             © {new Date().getFullYear()} {site.name}
           </p>
           <p>{company.legalName}</p>
-          <p>
-            NIP {company.nip} · REGON {company.regon}
-          </p>
           <p>
             <a href={`mailto:${site.email}`} className="hover:text-ink">
               {site.email}
