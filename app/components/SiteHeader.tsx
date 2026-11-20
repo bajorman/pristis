@@ -30,6 +30,8 @@ export default function SiteHeader() {
           ))}
           <a
             href="#contact"
+            data-umami-event="Request call"
+            data-umami-event-location="header"
             className="rounded-full bg-ink px-5 py-2.5 text-white transition-colors hover:bg-copper"
           >
             {ui.bookCall}
@@ -64,7 +66,12 @@ export default function SiteHeader() {
           ))}
           <a
             href="#contact"
-            onClick={() => setOpen(false)}
+            onClick={() => {
+              setOpen(false);
+              // Tracked in code rather than with data-umami-event, which can
+              // interfere with this element's own click handler.
+              window.umami?.track("Request call", { location: "mobile-menu" });
+            }}
             className="mt-5 block rounded-full bg-copper py-3 text-center font-semibold text-white"
           >
             {hero.primary}

@@ -70,6 +70,8 @@ export default function Home() {
               <div className="mt-9 flex flex-wrap gap-3">
                 <a
                   href="#contact"
+                  data-umami-event="Request call"
+                  data-umami-event-location="hero"
                   className="inline-flex items-center gap-2 rounded-full bg-copper px-6 py-3.5 font-semibold text-white transition hover:bg-ink"
                 >
                   {hero.primary}
@@ -89,6 +91,8 @@ export default function Home() {
                   <a
                     key={e.offer}
                     href={`#${packageId(e.offer)}`}
+                    data-umami-event="Hero entry"
+                    data-umami-event-offer={e.offer}
                     className="group flex items-start gap-3 rounded-2xl border border-line bg-white/50 p-4 transition hover:border-copper/60 hover:bg-white"
                   >
                     <span className="mt-0.5 shrink-0 text-copper">
@@ -207,6 +211,8 @@ export default function Home() {
                   <p className="text-xs font-bold uppercase tracking-[0.14em] text-copper-light">{f.format}</p>
                   <a
                     href={mailto(f.title)}
+                    data-umami-event="Service enquiry"
+                    data-umami-event-service={f.title}
                     className="inline-flex items-center gap-1.5 text-sm font-semibold text-white hover:text-copper-light"
                   >
                     {flagship.cta} <Icon name="arrow" className="size-4" />
@@ -236,6 +242,8 @@ export default function Home() {
                 <p className="mt-3 flex-1 text-sm leading-relaxed text-white/70">{p.text}</p>
                 <a
                   href={mailto(p.title)}
+                  data-umami-event="Package enquiry"
+                  data-umami-event-package={p.title}
                   className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-copper-light hover:text-white"
                 >
                   {packages.cta} <Icon name="arrow" className="size-4" />
@@ -352,6 +360,7 @@ export default function Home() {
               </ul>
               <a
                 href={mailto(aiRd.ctaSubject)}
+                data-umami-event="R&D review request"
                 className="mt-10 inline-flex items-center gap-2 rounded-full bg-copper-light px-6 py-3.5 font-semibold text-ink transition hover:bg-white"
               >
                 {aiRd.cta}
@@ -459,6 +468,8 @@ export default function Home() {
               </ul>
               <a
                 href={site.linkedin}
+                data-umami-event="LinkedIn"
+                data-umami-event-location="about"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-10 inline-flex items-center gap-2 font-semibold text-copper-light hover:text-white"
@@ -520,15 +531,24 @@ export default function Home() {
               <div className="flex flex-col gap-3">
                 <a
                   href={mailto(contact.subject)}
+                  data-umami-event="Email me"
+                  data-umami-event-location="contact-button"
                   className="inline-flex items-center justify-center gap-2 rounded-full bg-ink px-6 py-4 font-semibold transition hover:bg-white hover:text-ink"
                 >
                   {contact.button} <Icon name="arrow" className="size-4" />
                 </a>
-                <a href={mailto(contact.subject)} className="break-all text-center text-sm text-white/85 hover:text-white">
+                <a
+                  href={mailto(contact.subject)}
+                  data-umami-event="Email me"
+                  data-umami-event-location="contact-address"
+                  className="break-all text-center text-sm text-white/85 hover:text-white"
+                >
                   {site.email}
                 </a>
                 <a
                   href={site.linkedin}
+                  data-umami-event="LinkedIn"
+                  data-umami-event-location="contact"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="rounded-full border border-white/40 px-6 py-3.5 text-center font-semibold transition hover:bg-white/10"

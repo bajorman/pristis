@@ -16,6 +16,14 @@ export const company = {
   register: "CEIDG (Central Register and Information on Economic Activity)",
 };
 
+// Umami Cloud (cookieless analytics, EU data region). `domains` limits tracking
+// to the live site, so local previews are not counted.
+export const analytics = {
+  src: "https://cloud.umami.is/script.js",
+  websiteId: "4c5655cf-9db0-4473-ab29-a28b917cbe90",
+  domains: "www.pristismanagement.com",
+};
+
 // Path to a file in public/, prefixed with the base path when the site is
 // served from a sub-path (next/image and CSS do not add it on their own).
 export const asset = (path: string) =>

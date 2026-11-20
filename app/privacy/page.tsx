@@ -90,8 +90,28 @@ export default function Privacy() {
 
         <Section title="This website">
           <p>
-            This website does not use cookies, analytics or tracking tools. The R&amp;D relief simulation runs only in
-            your browser: the amounts you enter are not sent to me or stored anywhere.
+            This website does not use cookies. The R&amp;D relief simulation runs only in your browser: the amounts you
+            enter are not sent to me or stored anywhere.
+          </p>
+          <p>
+            To understand how the website is used, I use Umami Cloud, a privacy-focused analytics service provided by
+            Umami Software, Inc. It does not use cookies, does not store anything on your device and does not track
+            you across other websites. It records anonymised, aggregated information: pages visited, the referring
+            website, browser, operating system, device type, country, and clicks on key buttons and links (for
+            example &ldquo;Request a call&rdquo; or a starter package). Amounts entered in the calculator are never
+            recorded. The analytics data is stored in Umami&apos;s EU data region and kept for 6 months. The legal
+            basis is my legitimate interest in understanding how the website is used and improving it (Article
+            6(1)(f) GDPR). Umami acts as my processor under its{" "}
+            <a
+              href="https://umami.is/privacy"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-copper underline"
+            >
+              privacy policy
+            </a>{" "}
+            and data processing agreement; some supporting services (such as content delivery and security) may
+            involve processing outside the EU, as described below.
           </p>
           <p>
             The website is hosted on GitHub Pages (GitHub, Inc.). When you visit it, GitHub records visitors&apos; IP
@@ -119,7 +139,7 @@ export default function Privacy() {
 
         <Section title="Who receives your data">
           <p>
-            Your data may be processed by providers of e-mail, IT and hosting services and by my accounting office,
+            Your data may be processed by providers of e-mail, IT, hosting and website analytics (Umami) services and by my accounting office,
             acting on my behalf and under appropriate agreements. In R&amp;D tax relief projects, data may be shared
             with a licensed tax adviser involved in the engagement.
           </p>

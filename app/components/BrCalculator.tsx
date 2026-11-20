@@ -1,6 +1,6 @@
 "use client";
 
-import { useId, useState } from "react";
+import { useId, useRef, useState } from "react";
 
 // Simulation of the tax effect of the Polish R&D tax relief (ulga B+R) for a
 // single tax year. Qualifying staff costs of R&D work can be deducted at 200%,
@@ -52,6 +52,15 @@ export default function BrCalculator() {
   const [other, setOther] = useState("100 000");
   const [rateId, setRateId] = useState("cit19");
 
+  // Count the first interaction with the calculator once per visit. Only the
+  // fact of use is sent to analytics, never the amounts entered.
+  const used = useRef(false);
+  const markUsed = () => {
+    if (used.current) return;
+    used.current = true;
+    window.umami?.track("Calculator used");
+  };
+
   const staffParsed = parseAmount(staff);
   const otherParsed = parseAmount(other);
   const valid = !staffParsed.error && !otherParsed.error;
@@ -85,7 +94,10 @@ export default function BrCalculator() {
             aria-describedby={`${id}-staff-hint`}
             className={field(staffParsed.error)}
             value={staff}
-            onChange={(e) => setStaff(e.target.value)}
+            onChange={(e) => {
+              markUsed();
+              setStaff(e.target.value);
+            }}
           />
           <p id={`${id}-staff-hint`} className={`mt-1.5 text-xs ${staffParsed.error ? "text-red-200" : "text-white/45"}`}>
             {staffParsed.error ??
@@ -104,7 +116,10 @@ export default function BrCalculator() {
             aria-describedby={`${id}-other-hint`}
             className={field(otherParsed.error)}
             value={other}
-            onChange={(e) => setOther(e.target.value)}
+            onChange={(e) => {
+              markUsed();
+              setOther(e.target.value);
+            }}
           />
           <p id={`${id}-other-hint`} className={`mt-1.5 text-xs ${otherParsed.error ? "text-red-200" : "text-white/45"}`}>
             {otherParsed.error ??
@@ -128,7 +143,10 @@ export default function BrCalculator() {
                   name={`${id}-rate`}
                   value={r.id}
                   checked={rateId === r.id}
-                  onChange={() => setRateId(r.id)}
+                  onChange={() => {
+                    markUsed();
+                    setRateId(r.id);
+                  }}
                   className="sr-only"
                 />
                 {r.label}
