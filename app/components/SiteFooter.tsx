@@ -28,9 +28,6 @@ export default function SiteFooter() {
           </p>
           <p>{company.legalName}</p>
           <p>
-            NIP {company.nip} · REGON {company.regon}
-          </p>
-          <p>
             <a href={`mailto:${site.email}`} className="hover:text-ink">
               {site.email}
             </a>

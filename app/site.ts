@@ -11,6 +11,7 @@ export const site = {
 
 // The business as registered in CEIDG (Polish business register). "Pristis
 // Management" is the trading name; the registered business name is below.
+// The owner asked not to show the address, NIP or REGON on the site.
 export const company = {
   legalName: "PRISTIS Paweł Bajorek",
   register: "CEIDG (Central Register and Information on Economic Activity)",
