@@ -3,7 +3,7 @@
 Source of the PristisManagement website (www.pristismanagement.com).
 
 A one-page site in English. The first commit holds a copy of the earlier
-Google Sites version; the current layout replaced it.
+Google Sites version; later layouts replaced it.
 
 ## Commands
 
@@ -18,15 +18,22 @@ npm run lint
 ## Structure
 
 - `app/site.ts` – all copy: contact e-mail, LinkedIn link, menu, and the text
-  of every section (hero, who we help, services, steps, about)
+  of every section (hero, problems, service pillars, AI + R&D relief, packages,
+  results, steps, about, FAQ, contact)
 - `app/page.tsx` – the page layout, section by section; menu entries jump to
   the sections' `id`s
-- `app/components/SiteHeader.tsx` – sticky top bar with the menu
-- `app/components/Icon.tsx` – outline icons for the service cards
-- `app/globals.css` – colour tokens (navy from the logo, teal accent)
-- `public/images/` – logo (`logo.png` original, `logo-128.png`/`logo-512.png`
-  resized), used as favicon and link preview; the logo artwork has a typo
-  ("Managemeent"), so the header shows the name as text
+- `app/components/SiteHeader.tsx` – sticky top bar; the mobile menu is an
+  overlay that closes after a link is chosen or on Escape
+- `app/components/BrCalculator.tsx` – estimate of the R&D relief (ulga B+R)
+  tax saving: staff costs at 200%, other qualifying costs at 100%, times the
+  chosen tax rate
+- `app/components/Logo.tsx` – sawfish-rostrum mark and wordmark; the same mark
+  is `public/images/icon.svg` (favicon)
+- `app/components/Icon.tsx` – outline icons
+- `app/globals.css` – colour tokens (paper, navy, copper) and fonts
+  (Fraunces for headings, Manrope for text, self-hosted by next/font)
+- `public/images/` – portraits resized from the originals in
+  `C:\HAI\PristisManagement\zdjecia` and `og.jpg` (1200x630 link preview)
 
 The site is built as a static export (`output: "export"` in `next.config.ts`),
 so `out/` can be hosted on any static host.

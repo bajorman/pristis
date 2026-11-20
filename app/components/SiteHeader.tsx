@@ -1,45 +1,76 @@
-import { nav, site } from "../site";
+"use client";
+
+import { useEffect, useState } from "react";
+import { hero, nav, ui } from "../site";
+import Logo from "./Logo";
 
 export default function SiteHeader() {
+  const [open, setOpen] = useState(false);
+
+  // Close the mobile menu with Escape.
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open]);
+
   return (
-    <header className="sticky top-0 z-20 border-b border-black/5 bg-white/90 backdrop-blur">
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-4 py-4 sm:px-6">
-        <a href="#top" className="text-lg font-bold tracking-tight text-navy">
-          {site.name}
+    <header className="sticky top-0 z-30 border-b border-line/70 bg-paper/90 backdrop-blur">
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-4 py-3.5 sm:px-6">
+        <a href="#top" aria-label={ui.home} onClick={() => setOpen(false)}>
+          <Logo />
         </a>
 
-        <nav className="hidden items-center gap-7 text-sm md:flex">
+        <nav aria-label={ui.mainMenu} className="hidden items-center gap-6 text-sm font-semibold lg:flex">
           {nav.map((item) => (
-            <a key={item.href} href={item.href} className="text-muted hover:text-navy">
+            <a key={item.href} href={item.href} className="text-muted transition-colors hover:text-ink">
               {item.label}
             </a>
           ))}
           <a
             href="#contact"
-            className="rounded-full bg-navy px-4 py-2 font-bold text-white hover:bg-navy/90"
+            className="rounded-full bg-ink px-5 py-2.5 text-white transition-colors hover:bg-copper"
           >
-            Contact
+            {ui.bookCall}
           </a>
         </nav>
 
-        {/* Mobile menu without JavaScript. */}
-        <details className="relative md:hidden">
-          <summary className="cursor-pointer list-none rounded-md px-2 py-1 text-sm font-bold text-navy">
-            Menu
-          </summary>
-          <div className="absolute right-0 mt-2 w-48 rounded-lg border border-black/10 bg-white p-2 shadow-lg">
-            {[...nav, { href: "#contact", label: "Contact" }].map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className="block rounded px-3 py-2 text-sm hover:bg-surface"
-              >
-                {item.label}
-              </a>
-            ))}
-          </div>
-        </details>
+        <button
+          type="button"
+          className="flex items-center gap-2 rounded-full border border-line px-4 py-2 text-sm font-semibold lg:hidden"
+          aria-expanded={open}
+          aria-controls="mobile-menu"
+          onClick={() => setOpen((v) => !v)}
+        >
+          {open ? ui.close : ui.menu}
+          <svg viewBox="0 0 16 16" className="size-4" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
+            {open ? <path d="m4 4 8 8M12 4l-8 8" /> : <path d="M2.5 5h11M2.5 11h11" />}
+          </svg>
+        </button>
       </div>
+
+      {open && (
+        <nav id="mobile-menu" aria-label={ui.mainMenu} className="absolute inset-x-0 top-full border-y border-line bg-paper px-4 pb-6 pt-2 shadow-xl shadow-ink/10 lg:hidden">
+          {[...nav, { href: "#contact", label: ui.contact }].map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              onClick={() => setOpen(false)}
+              className="block border-b border-line/70 py-3.5 font-serif text-xl"
+            >
+              {item.label}
+            </a>
+          ))}
+          <a
+            href="#contact"
+            onClick={() => setOpen(false)}
+            className="mt-5 block rounded-full bg-copper py-3 text-center font-semibold text-white"
+          >
+            {hero.primary}
+          </a>
+        </nav>
+      )}
     </header>
   );
 }

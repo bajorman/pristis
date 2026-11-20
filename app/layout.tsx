@@ -1,30 +1,41 @@
 import type { Metadata } from "next";
-import { Lato } from "next/font/google";
+import { Fraunces, Manrope } from "next/font/google";
 import { asset, site } from "./site";
 import "./globals.css";
 
-const lato = Lato({
-  variable: "--font-lato",
+const manrope = Manrope({
+  variable: "--font-manrope",
   subsets: ["latin", "latin-ext"],
-  weight: ["300", "400", "700"],
+});
+
+const fraunces = Fraunces({
+  variable: "--font-fraunces",
+  subsets: ["latin", "latin-ext"],
+  style: ["normal", "italic"],
 });
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: site.name,
-    template: `${site.name} - %s`,
+    default: `${site.name} — project management, Scaled Agile and AI`,
+    template: `%s — ${site.name}`,
   },
-  description:
-    "PristisManagement is a consulting and mentoring company for technology leaders.",
-  icons: { icon: asset("/images/logo-128.png") },
-  openGraph: { images: asset("/images/logo-512.png") },
+  description: site.description,
+  icons: { icon: asset("/images/icon.svg") },
+  openGraph: {
+    type: "website",
+    locale: "en_GB",
+    siteName: site.name,
+    title: `${site.name} — projects and teams that deliver results`,
+    description: site.description,
+    images: asset("/images/og.jpg"),
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${lato.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col font-sans">{children}</body>
+    <html lang="en" className={`${manrope.variable} ${fraunces.variable} h-full antialiased`}>
+      <body className="flex min-h-full flex-col font-sans">{children}</body>
     </html>
   );
 }

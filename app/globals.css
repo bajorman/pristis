@@ -1,31 +1,57 @@
 @import "tailwindcss";
 
-/* Navy taken from the logo, with a teal accent. */
+/*
+  Palette: deep navy taken from the suit in the portraits, warm paper
+  background, and a copper accent. Display type is a serif (Fraunces),
+  body text a geometric sans (Manrope).
+*/
 :root {
-  --background: #ffffff;
-  --foreground: #0f1c2b;
-  --muted: #5b6878;
-  --surface: #f4f6f9;
-  --navy: #0f2235;
-  --accent: #14a3a3;
+  --paper: #f6f3ee;
+  --stone: #ebe5db;
+  --ink: #0c1a2a;
+  --navy: #0f2438;
+  --muted: #5b6573;
+  --line: #d9d1c4;
+  --copper: #b4532a;
+  --copper-light: #e59a6c;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-muted: var(--muted);
-  --color-surface: var(--surface);
+  --color-paper: var(--paper);
+  --color-stone: var(--stone);
+  --color-ink: var(--ink);
   --color-navy: var(--navy);
-  --color-accent: var(--accent);
-  --font-sans: var(--font-lato);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-copper: var(--copper);
+  --color-copper-light: var(--copper-light);
+  --font-sans: var(--font-manrope);
+  --font-serif: var(--font-fraunces);
 }
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 5rem;
+  scroll-padding-top: 5.5rem;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--paper);
+  color: var(--ink);
+}
+
+::selection {
+  background: var(--copper);
+  color: #fff;
+}
+
+/* Subtle grain on dark sections so flat navy does not look like a slab. */
+.grain {
+  background-image: radial-gradient(rgb(255 255 255 / 0.05) 1px, transparent 1px);
+  background-size: 4px 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
