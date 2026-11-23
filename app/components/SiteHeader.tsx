@@ -1,10 +1,20 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { hero, nav, ui } from "../site";
+import type { Content } from "../content/en";
+import type { Locale } from "../site";
 import Logo from "./Logo";
 
-export default function SiteHeader() {
+type Props = {
+  nav: Content["nav"];
+  ui: Content["ui"];
+  primary: string;
+  // Link to the same page in the other language.
+  switchHref: string;
+  switchLang: Locale;
+};
+
+export default function SiteHeader({ nav, ui, primary, switchHref, switchLang }: Props) {
   const [open, setOpen] = useState(false);
 
   // Close the mobile menu with Escape.
@@ -14,6 +24,21 @@ export default function SiteHeader() {
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [open]);
+
+  const langLink = (className: string) => (
+    <a
+      href={switchHref}
+      hrefLang={switchLang}
+      lang={switchLang}
+      title={ui.switchTitle}
+      aria-label={ui.switchTitle}
+      data-umami-event="Language switch"
+      data-umami-event-to={switchLang}
+      className={className}
+    >
+      {ui.switchLabel}
+    </a>
+  );
 
   return (
     <header className="sticky top-0 z-30 border-b border-line/70 bg-paper/90 backdrop-blur">
@@ -28,6 +53,9 @@ export default function SiteHeader() {
               {item.label}
             </a>
           ))}
+          {langLink(
+            "rounded-full border border-line px-3 py-1.5 text-xs font-bold tracking-wider text-muted transition-colors hover:border-ink hover:text-ink",
+          )}
           <a
             href="#contact"
             data-umami-event="Request call"
@@ -38,18 +66,21 @@ export default function SiteHeader() {
           </a>
         </nav>
 
-        <button
-          type="button"
-          className="flex items-center gap-2 rounded-full border border-line px-4 py-2 text-sm font-semibold lg:hidden"
-          aria-expanded={open}
-          aria-controls="mobile-menu"
-          onClick={() => setOpen((v) => !v)}
-        >
-          {open ? ui.close : ui.menu}
-          <svg viewBox="0 0 16 16" className="size-4" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
-            {open ? <path d="m4 4 8 8M12 4l-8 8" /> : <path d="M2.5 5h11M2.5 11h11" />}
-          </svg>
-        </button>
+        <div className="flex items-center gap-2 lg:hidden">
+          {langLink("rounded-full border border-line px-3 py-2 text-xs font-bold tracking-wider text-muted")}
+          <button
+            type="button"
+            className="flex items-center gap-2 rounded-full border border-line px-4 py-2 text-sm font-semibold"
+            aria-expanded={open}
+            aria-controls="mobile-menu"
+            onClick={() => setOpen((v) => !v)}
+          >
+            {open ? ui.close : ui.menu}
+            <svg viewBox="0 0 16 16" className="size-4" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
+              {open ? <path d="m4 4 8 8M12 4l-8 8" /> : <path d="M2.5 5h11M2.5 11h11" />}
+            </svg>
+          </button>
+        </div>
       </div>
 
       {open && (
@@ -74,7 +105,7 @@ export default function SiteHeader() {
             }}
             className="mt-5 block rounded-full bg-copper py-3 text-center font-semibold text-white"
           >
-            {hero.primary}
+            {primary}
           </a>
         </nav>
       )}

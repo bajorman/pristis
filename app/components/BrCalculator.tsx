@@ -1,6 +1,7 @@
 "use client";
 
 import { useId, useRef, useState } from "react";
+import type { Content } from "../content/en";
 
 // Simulation of the tax effect of the Polish R&D tax relief (ulga B+R) for a
 // single tax year. Qualifying staff costs of R&D work can be deducted at 200%,
@@ -10,14 +11,14 @@ import { useId, useRef, useState } from "react";
 // model does not capture. It assumes enough taxable income to use the whole
 // deduction; the notes under the result say so.
 const rates = [
-  { id: "cit19", label: "CIT 19%", rate: 0.19 },
-  { id: "cit9", label: "CIT 9%", rate: 0.09 },
-  { id: "pit19", label: "PIT flat 19%", rate: 0.19 },
-];
+  { id: "cit19", rate: 0.19 },
+  { id: "cit9", rate: 0.09 },
+  { id: "pit19", rate: 0.19 },
+] as const;
 
 const MAX = 1_000_000_000;
 
-const pln = new Intl.NumberFormat("en-GB", { style: "currency", currency: "PLN", maximumFractionDigits: 0 });
+type Strings = Content["calc"];
 
 // Whole PLN amounts only: digits, optionally grouped in thousands with ONE kind
 // of separator used throughout the amount: a space, a comma or a dot
@@ -26,31 +27,28 @@ const pln = new Intl.NumberFormat("en-GB", { style: "currency", currency: "PLN",
 type Parsed = { value: number; error?: string };
 
 // Thousands groups with the same separator throughout (backreference \1).
-const GROUPED = /^\d{1,3}([ \u00a0,.])\d{3}(?:\1\d{3})*$/;
-const DIGITS_AND_SEPARATORS = /^[\d \u00a0,.]+$/;
+const GROUPED = /^\d{1,3}([  ,.])\d{3}(?:\1\d{3})*$/;
+const DIGITS_AND_SEPARATORS = /^[\d  ,.]+$/;
 
-function parseAmount(raw: string): Parsed {
+function parseAmount(raw: string, errors: Strings["errors"]): Parsed {
   const v = raw.trim();
-  if (v === "") return { value: 0, error: "Enter an amount (0 if none)." };
-  if (/^-/.test(v)) return { value: 0, error: "The amount cannot be negative." };
+  if (v === "") return { value: 0, error: errors.empty };
+  if (/^-/.test(v)) return { value: 0, error: errors.negative };
   if (!/^\d+$/.test(v) && !GROUPED.test(v)) {
-    return {
-      value: 0,
-      error: DIGITS_AND_SEPARATORS.test(v)
-        ? "Use one thousands separator throughout, e.g. 1 234 567 or 1,234,567 (whole PLN, no decimals)."
-        : "Use whole PLN, e.g. 500000, 500 000 or 500,000.",
-    };
+    return { value: 0, error: DIGITS_AND_SEPARATORS.test(v) ? errors.mixed : errors.format };
   }
   const n = Number(v.replace(/\D/g, ""));
-  if (n > MAX) return { value: 0, error: "Amounts above PLN 1 billion are not supported." };
+  if (n > MAX) return { value: 0, error: errors.max };
   return { value: n };
 }
 
-export default function BrCalculator() {
+export default function BrCalculator({ t }: { t: Strings }) {
   const id = useId();
   const [staff, setStaff] = useState("500 000");
   const [other, setOther] = useState("100 000");
-  const [rateId, setRateId] = useState("cit19");
+  const [rateId, setRateId] = useState<(typeof rates)[number]["id"]>("cit19");
+
+  const pln = new Intl.NumberFormat(t.numberLocale, { style: "currency", currency: "PLN", maximumFractionDigits: 0 });
 
   // Count the first interaction with the calculator once per visit. Only the
   // fact of use is sent to analytics, never the amounts entered.
@@ -61,8 +59,8 @@ export default function BrCalculator() {
     window.umami?.track("Calculator used");
   };
 
-  const staffParsed = parseAmount(staff);
-  const otherParsed = parseAmount(other);
+  const staffParsed = parseAmount(staff, t.errors);
+  const otherParsed = parseAmount(other, t.errors);
   const valid = !staffParsed.error && !otherParsed.error;
 
   const rate = rates.find((r) => r.id === rateId)!.rate;
@@ -76,15 +74,13 @@ export default function BrCalculator() {
 
   return (
     <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-6 sm:p-8">
-      <p className="text-sm font-bold uppercase tracking-[0.18em] text-copper-light">R&amp;D relief simulation</p>
-      <p className="mt-2 text-white/70">
-        An illustration of the possible tax effect for one tax year under the Polish R&amp;D tax relief.
-      </p>
+      <p className="text-sm font-bold uppercase tracking-[0.18em] text-copper-light">{t.title}</p>
+      <p className="mt-2 text-white/70">{t.intro}</p>
 
       <div className="mt-6 grid gap-5">
         <div>
           <label className="block text-sm font-semibold text-white/85" htmlFor={`${id}-staff`}>
-            Qualifying staff costs of R&amp;D work (one year, whole PLN, e.g. 500 000)
+            {t.staffLabel}
           </label>
           <input
             id={`${id}-staff`}
@@ -100,13 +96,12 @@ export default function BrCalculator() {
             }}
           />
           <p id={`${id}-staff-hint`} className={`mt-1.5 text-xs ${staffParsed.error ? "text-red-200" : "text-white/45"}`}>
-            {staffParsed.error ??
-              "Employees' salaries and pay under contracts of mandate or for specific work (umowa zlecenie, umowa o dzieło), with the social contributions paid by the payer — in proportion to time spent on R&D. Deducted at 200%."}
+            {staffParsed.error ?? t.staffHint}
           </p>
         </div>
         <div>
           <label className="block text-sm font-semibold text-white/85" htmlFor={`${id}-other`}>
-            Other qualifying costs (one year, whole PLN, e.g. 100 000)
+            {t.otherLabel}
           </label>
           <input
             id={`${id}-other`}
@@ -122,12 +117,11 @@ export default function BrCalculator() {
             }}
           />
           <p id={`${id}-other-hint`} className={`mt-1.5 text-xs ${otherParsed.error ? "text-red-200" : "text-white/45"}`}>
-            {otherParsed.error ??
-              "E.g. materials, specialist equipment, depreciation, patents, and expert opinions or services bought from scientific institutions such as universities or research institutes. Deducted at 100%."}
+            {otherParsed.error ?? t.otherHint}
           </p>
         </div>
         <fieldset>
-          <legend className="text-sm font-semibold text-white/85">Tax regime</legend>
+          <legend className="text-sm font-semibold text-white/85">{t.regime}</legend>
           <div className="mt-2 grid grid-cols-3 gap-2">
             {rates.map((r) => (
               <label
@@ -149,38 +143,26 @@ export default function BrCalculator() {
                   }}
                   className="sr-only"
                 />
-                {r.label}
+                {t.rates[r.id]}
               </label>
             ))}
           </div>
-          {rateId === "cit9" && (
-            <p className="mt-2 text-xs text-white/55">
-              CIT 9% applies to small taxpayers (sales revenue up to EUR 2 million in the previous year) and to
-              companies in their first tax year, and only while revenue in the current tax year does not exceed the
-              PLN equivalent of EUR 2 million. It covers income other than capital gains, subject to further
-              statutory conditions.
-            </p>
-          )}
+          {rateId === "cit9" && <p className="mt-2 text-xs text-white/55">{t.cit9Note}</p>}
         </fieldset>
       </div>
 
       <div className="mt-8 border-t border-white/10 pt-6" aria-live="polite">
-        <p className="text-sm text-white/70">Possible tax effect for this tax year</p>
+        <p className="text-sm text-white/70">{t.effect}</p>
         <p className="mt-1 font-serif text-4xl font-semibold text-white tabular-nums sm:text-5xl">
           {valid ? pln.format(effect) : "—"}
         </p>
         {valid && (
-          <p className="mt-3 text-sm text-white/70">Additional deduction from the tax base: {pln.format(deduction)}.</p>
+          <p className="mt-3 text-sm text-white/70">
+            {t.deduction} {pln.format(deduction)}.
+          </p>
         )}
       </div>
-      <p className="mt-5 text-xs leading-relaxed text-white/45">
-        A simulation for one tax year for a standard taxpayer without research and development centre (CBR) status,
-        not tax advice. It assumes the costs qualify and that there is enough income to absorb
-        the whole deduction — for CIT, income from sources other than capital gains; for PIT, income from business
-        activity. An unused part can be carried forward to the next six tax years. Whether
-        the work and costs qualify depends on the nature of the work, its documentation and the taxpayer&apos;s
-        situation, and is assessed by a licensed tax adviser. Progressive PIT is not modelled.
-      </p>
+      <p className="mt-5 text-xs leading-relaxed text-white/45">{t.disclaimer}</p>
     </div>
   );
 }
