@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Fraunces, Manrope } from "next/font/google";
 import Script from "next/script";
 import { en } from "./content/en";
-import { analytics, asset, site } from "./site";
+import { analytics, asset, preview, site } from "./site";
 import "./globals.css";
 
 const manrope = Manrope({
@@ -25,6 +25,8 @@ export const metadata: Metadata = {
   description: en.meta.description,
   alternates: { canonical: "/", languages: { en: "/", pl: "/pl/", "x-default": "/" } },
   icons: { icon: asset("/images/icon.svg") },
+  // The test build must never be indexed (see `preview` in site.ts).
+  ...(preview && { robots: { index: false, follow: false } }),
   openGraph: {
     type: "website",
     locale: en.meta.ogLocale,

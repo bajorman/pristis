@@ -34,6 +34,8 @@ jobs:
       - run: npm run build
         env:
           PAGES_BASE_PATH: ${{ vars.PAGES_BASE_PATH }}
+          # "1" only in the test repository (pristis-test): adds noindex.
+          SITE_PREVIEW: ${{ vars.SITE_PREVIEW }}
       - uses: actions/upload-pages-artifact@v4
         with:
           path: out

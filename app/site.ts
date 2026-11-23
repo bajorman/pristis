@@ -40,3 +40,8 @@ export const entryAnchor = (id: string) => `start-${id}`;
 
 export const mailto = (subject: string) =>
   `mailto:${site.email}?subject=${encodeURIComponent(subject)}`;
+
+// Test build (repository variable SITE_PREVIEW=1 in the test repository,
+// served at testingpristis.pristismanagement.com): search engines are told
+// not to index it, so it never competes with the live site.
+export const preview = process.env.SITE_PREVIEW === "1";
