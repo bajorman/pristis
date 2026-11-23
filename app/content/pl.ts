@@ -18,6 +18,7 @@ export const pl: Content = {
     { href: "#services", label: "Usługi" },
     { href: "#start", label: "Jak zacząć" },
     { href: "#ai", label: "AI" },
+    { href: "#leadership", label: "Przywództwo" },
     { href: "#results", label: "Wyniki" },
     { href: "#about", label: "O mnie" },
   ],
@@ -29,10 +30,15 @@ export const pl: Content = {
     lead: "Praktyczny partner dla liderów technologii w dwóch obszarach: AI w praktyce – od strategii na poziomie zarządu po systemy działające produkcyjnie – oraz przywództwo technologiczne – od interim CTO po zespoły i projekty, które dowożą. Ponad 20 lat budowania organizacji inżynierskich.",
     primary: "Umów 30-minutową rozmowę",
     secondary: "Zobacz dwa filary",
-    entriesTitle: "Dwa sposoby na start",
+    entriesTitle: "Od czego zaczynasz?",
     entries: [
-      { id: "project-rescue", offer: "Ratowanie projektu IT", note: "Projekty opóźnione lub ponad budżet", icon: "lifebuoy" },
-      { id: "ai-health-check", offer: "Przegląd systemu AI", note: "AI już działa w firmie", icon: "pulse" },
+      { id: "ai", offer: "AI w praktyce", note: "Chcesz, żeby AI działało nie tylko na demo", icon: "spark" },
+      {
+        id: "leadership",
+        offer: "Przywództwo technologiczne",
+        note: "Potrzebujesz lidera technologii albo projektu z powrotem na torach",
+        icon: "compass",
+      },
     ],
   },
 
@@ -54,20 +60,16 @@ export const pl: Content = {
         a: "Bez zbioru testowego i miar jakości nikt tego nie wie. Dlatego praca z AI zaczyna się od ewaluacji – wtedy zarząd decyduje na podstawie faktów, a nie efektownego demo.",
       },
       {
+        q: "„Nasi programiści korzystają z asystentów AI. Czy to się naprawdę opłaca?”",
+        a: "Często nikt tego nie mierzy. Jasne zasady bezpieczeństwa i jakości kodu oraz kilka uczciwych miar pokazują, gdzie zysk jest realny, a gdzie to tylko wrażenie.",
+      },
+      {
         q: "„Potrzebujemy CTO, ale nie na pełen etat. Da się tak?”",
         a: "Tak. Fractional CTO pracuje kilka dni w miesiącu nad strategią, architekturą, zespołem i dostarczaniem, a interim CTO wypełnia lukę do czasu zatrudnienia stałej osoby.",
       },
       {
-        q: "„Nasze zespoły pracują zwinnie, a duże inicjatywy i tak się opóźniają. Czego brakuje?”",
-        a: "Agile działa w obrębie zespołu, ale nikt nie koordynuje pracy między zespołami. Tę lukę zamyka Scaled Agile – jeśli wdroży się go z rozwagą.",
-      },
-      {
-        q: "„Każda zmiana wymaga pięciu zespołów i spotkania. Dlaczego jesteśmy tacy wolni?”",
-        a: "Zwykle winna jest struktura i zależności między zespołami, a nie ludzie. Da się to zdiagnozować i naprawić krok po kroku.",
-      },
-      {
-        q: "„Tworzymy własne oprogramowanie. Czy przysługuje nam ulga B+R?”",
-        a: "Być może – jeśli prace spełniają definicję B+R i są dobrze udokumentowane. Wiele firm nigdy tego nie sprawdza. Można też przejrzeć wcześniejsze lata podatkowe, które nie uległy przedawnieniu.",
+        q: "„Pracujemy zwinnie, a każda większa zmiana angażuje pięć zespołów i mimo to się opóźnia. Dlaczego?”",
+        a: "Zwykle winna jest struktura i zależności między zespołami, a nie ludzie – i to, że nikt nie koordynuje pracy między nimi. Da się to zdiagnozować i naprawić krok po kroku.",
       },
     ],
   },
@@ -125,7 +127,7 @@ export const pl: Content = {
         number: "02",
         title: "Przywództwo technologiczne",
         tagline: "Doświadczony lider technologii wtedy, gdy go potrzebujesz.",
-        lead: "Przywództwo dla Twojej organizacji technologicznej – strategia, architektura, zespoły i dostarczanie – na określony czas albo kilka dni w miesiącu, bez zatrudniania na stałe.",
+        lead: "Organizacja technologiczna, która dowozi przewidywalnie: jasny kierunek, solidna architektura, silni liderzy i projekty, które kończą się sukcesem – z doświadczonym przywództwem dokładnie tam, gdzie go brakuje.",
         icon: "compass",
         services: [
           {
@@ -135,31 +137,31 @@ export const pl: Content = {
           },
           {
             title: "Audyt technologii i architektury",
-            text: "Jasny obraz Twoich systemów: co działa, co blokuje rozwój, ile naprawdę kosztuje chmura i co naprawić najpierw.",
+            text: "Jasny obraz Twoich systemów: co działa, co blokuje rozwój, gdzie jest dług technologiczny i ryzyka bezpieczeństwa oraz co naprawić najpierw.",
             format: "3–5 tygodni",
           },
           {
-            title: "Skalowanie zespołów inżynierskich",
-            text: "Struktura zespołów, procesy inżynierskie i DevOps dopasowane do wielkości firmy i tempa, którego potrzebuje.",
-            format: "warsztaty · projekt",
+            title: "Dostarczanie i portfel projektów",
+            text: "Przewidywalne dostarczanie w całym portfelu: priorytety, ład projektowy, działające PMO i raportowanie, na którym zarząd może polegać.",
+            format: "diagnoza · 2–4 miesiące",
           },
           {
-            title: "Mentoring dla liderów technologii",
-            text: "Praca jeden na jeden z CTO, VP of Engineering i menedżerami zespołów nad decyzjami, których nie da się delegować – i nad dobrym delegowaniem reszty.",
-            format: "sesje 1:1 · co miesiąc",
+            title: "Procesy inżynierskie i DevOps",
+            text: "Droga kodu od pomysłu do produkcji: CI/CD, jakość, zarządzanie wydaniami i produktywność programistów, dopasowane do tempa, którego potrzebuje firma.",
+            format: "2–4 miesiące",
           },
           {
-            title: "Program przywódczy dla menedżerów inżynierii",
-            text: "Delegowanie z jasnymi poziomami decyzji, motywacja, samoorganizujące się zespoły, szczera informacja zwrotna i rozmowy o wynikach.",
-            format: "grupa · 3–6 miesięcy",
+            title: "Mentoring i rozwój liderów",
+            text: "Mentoring jeden na jeden dla CTO i VP of Engineering oraz program dla menedżerów inżynierii: delegowanie z jasnymi poziomami decyzji, szczera informacja zwrotna i samoorganizujące się zespoły.",
+            format: "1:1 co miesiąc · grupa 3–6 miesięcy",
           },
           {
-            title: "Kadra liderów i talentów",
-            text: "Procesy rekrutacji liderów i inżynierów, przeglądy talentów i plany sukcesji na kluczowe role.",
+            title: "Rekrutacja i sukcesja na kluczowe role",
+            text: "Procesy rekrutacji liderów i inżynierów, przeglądy talentów i plany sukcesji, żeby organizacja nie zależała od kilku osób.",
             format: "projekt · stałe wsparcie",
           },
         ],
-        note: "Wiele współprac przechodzi w stałe wsparcie: kilka dni w miesiącu jako fractional CTO albo zaufany doradca zespołu zarządzającego.",
+        note: "Ratowanie projektów, zarządzanie projektami, Scaled Agile i projektowanie organizacji realizuję jako skoncentrowane zlecenia – zobacz punkty wejścia poniżej.",
       },
     ] as Pillar[],
   },
@@ -173,6 +175,7 @@ export const pl: Content = {
     cta: "Zapytaj o to",
     groups: [
       {
+        id: "ai",
         pillar: "AI w praktyce",
         icon: "spark",
         items: [
@@ -197,24 +200,10 @@ export const pl: Content = {
             text: "Dla inwestorów: czy AI w spółce to realna przewaga, czy nakładka na cudzy model? Technologia, dane, koszty i ryzyko regulacyjne.",
             icon: "search",
           },
-          {
-            id: "cost-optimisation",
-            title: "Optymalizacja kosztów chmury i AI",
-            time: "3–6 tygodni",
-            text: "Przegląd rachunków za chmurę i modele AI, z oszczędnościami, które da się wdrożyć i zmierzyć.",
-            icon: "chart",
-          },
-          {
-            id: "rd-review",
-            title: "Techniczny przegląd B+R",
-            time: "1–2 tygodnie",
-            text: "Prace nad oprogramowaniem i AI, które mogą kwalifikować się do ulgi B+R – zidentyfikowane i udokumentowane. Kwalifikowalność ocenia licencjonowany doradca podatkowy.",
-            icon: "coins",
-            link: { href: "#ai-rd", label: "Jak to działa" },
-          },
         ] as Entry[],
       },
       {
+        id: "leadership",
         pillar: "Przywództwo technologiczne",
         icon: "compass",
         items: [
@@ -256,34 +245,53 @@ export const pl: Content = {
         ] as Entry[],
       },
     ],
+    shared: {
+      title: "Dla obu filarów",
+      items: [
+        {
+          id: "cost-optimisation",
+          title: "Optymalizacja kosztów chmury i AI",
+          time: "3–6 tygodni",
+          text: "Przegląd rachunków za chmurę i modele AI, z oszczędnościami, które da się wdrożyć i zmierzyć.",
+          icon: "chart",
+        },
+        {
+          id: "rd-review",
+          title: "Techniczny przegląd B+R",
+          time: "1–2 tygodnie",
+          text: "Prace nad oprogramowaniem i AI, które mogą kwalifikować się do ulgi B+R – zidentyfikowane i udokumentowane. Kwalifikowalność ocenia licencjonowany doradca podatkowy.",
+          icon: "coins",
+          link: { href: "#ai-rd", label: "Jak to działa" },
+        },
+      ] as Entry[],
+    },
   },
 
   aiExpertise: {
-    kicker: "Kompetencje AI",
+    kicker: "Za filarem 01",
     title: "Obie strony AI:",
     accent: "sala zarządu i budowa.",
+    lead: "Projekty AI upadają w dwóch miejscach: w sali zarządu, gdy oczekiwania buduje się na demo, i przy budowie, gdy nikt nie mierzy jakości i kosztów. Pracuję po obu stronach.",
     items: [
       {
-        title: "Strategia i koncepcja",
-        text: "Rozumiem, jak uczą się modele, co naprawdę potrafią, gdzie są ich granice i co to oznacza dla firmy i jej ludzi – i potrafię to jasno wytłumaczyć zarządowi.",
+        title: "W sali zarządu",
+        text: "Wykształcenie z matematyki stosowanej: rozumiem, jak uczą się modele, dlaczego się mylą i gdzie są ich granice – i tłumaczę to zarządom prostym językiem.",
         points: [
-          "Jak uczą się modele – i dlaczego się mylą",
-          "Realne możliwości i twarde ograniczenia",
-          "Wpływ na biznes, role i ludzi",
-          "Jasne wyjaśnienia dla zarządów",
+          "Warsztaty dla zarządów bez szumu marketingowego",
+          "Uzasadnienie biznesowe z uczciwą opcją „nie róbcie tego”",
+          "Wpływ na role i ludzi, nie tylko na procesy",
+          "Polityka AI i gotowość na AI Act od początku",
         ],
         icon: "compass",
       },
       {
-        title: "Inżynieria",
-        text: "Wiem, jak budować produkcyjne aplikacje na modelach bazowych – i czego trzeba, żeby były niezawodne, bezpieczne i tanie w utrzymaniu.",
+        title: "Przy budowie",
+        text: "Praktyczne doświadczenie w dostarczaniu systemów AI i uczenia maszynowego – od pierwszego prototypu po produkcję.",
         points: [
-          "Wyszukiwanie w dokumentach firmy (RAG)",
-          "Agenci AI korzystający z Twoich narzędzi i systemów",
-          "Ewaluacja i miary jakości",
-          "Dostrajanie modeli i przygotowanie danych",
-          "Optymalizacja kosztów i czasu odpowiedzi",
-          "Monitoring, zabezpieczenia i bezpieczeństwo",
+          "Rozwiązanie AI do wyważenia samolotów (weight & balance) – od koncepcji po wdrożenie",
+          "Produkty uczenia maszynowego do sprzedaży usług lotniczych, z globalnym partnerem technologicznym",
+          "Praktyka z RAG, agentami i ewaluacją na współczesnych modelach bazowych",
+          "Koszt, czas odpowiedzi i bezpieczeństwo wbudowane od pierwszego prototypu",
         ],
         icon: "spark",
       },
@@ -381,7 +389,7 @@ export const pl: Content = {
       {
         when: "Tygodnie 1–3",
         title: "Diagnoza",
-        text: "Przegląd technologii, zespołu, procesów i potencjału B+R. Na piśmie: co zrobimy, jaki będzie rezultat i jak go zmierzymy.",
+        text: "Przegląd technologii, zespołu i procesów. Na piśmie: co zrobimy, jaki będzie rezultat i jak go zmierzymy.",
       },
       {
         when: "Tygodnie 4–12",
@@ -406,9 +414,41 @@ export const pl: Content = {
     ],
   },
 
+  leadership: {
+    kicker: "Za filarem 02",
+    title: "Przywództwo w praktyce:",
+    accent: "ludzie, struktura, dostarczanie.",
+    lead: "Organizacje technologiczne zwalniają z dwóch powodów: struktura przestaje pasować do wielkości firmy, a dostarczanie traci rytm. Naprawiałem jedno i drugie – od środka.",
+    items: [
+      {
+        title: "Organizacja i ludzie",
+        text: "Budowa i prowadzenie organizacji inżynierskich – od kilku zespołów po ponad 300 inżynierów w kilku krajach.",
+        points: [
+          "Organizacja inżynierska rozbudowana z 20 do ponad 150 osób w 3 lata",
+          "Struktura zespołów i architektura kształtowane razem",
+          "Liderzy rozwijani wewnątrz, z jasnymi poziomami decyzji",
+          "Szczera informacja zwrotna na co dzień, nie raz w roku",
+        ],
+        icon: "compass",
+      },
+      {
+        title: "Dostarczanie",
+        text: "Duże programy w bankowości, technologiach lotniczych i energetyce – prowadzone metodą, która pasuje, a nie tą, która jest modna.",
+        points: [
+          "Czas dostarczania oprogramowania skrócony o połowę",
+          "Scaled Agile wdrożony w kilku organizacjach",
+          "PMP®, PRINCE2® i Scrum, dopasowane do firmy",
+          "Ład portfelowy, na którym zarząd może polegać",
+        ],
+        icon: "layers",
+      },
+    ],
+  },
+
   orgPrinciples: {
     kicker: "Jak buduję organizacje",
-    title: "Cztery zasady",
+    title: "Cztery zasady,",
+    accent: "jeden system.",
     items: [
       {
         title: "Projektuj zespoły pod przepływ",
@@ -491,18 +531,6 @@ export const pl: Content = {
     kicker: "FAQ",
     title: "Najczęstsze pytania",
     items: [
-      {
-        q: "Dlaczego tylko dwa filary, skoro zajmujesz się też zarządzaniem projektami, SAFe i ulgą B+R?",
-        a: "Bo to właśnie klienci u mnie kupują: AI, które działa w praktyce, i przywództwo dla ich organizacji technologicznej. Zarządzanie projektami, Scaled Agile, projektowanie organizacji, due diligence i dokumentacja B+R to konkretne drogi do tego celu – często pierwszy krok dłuższej współpracy.",
-      },
-      {
-        q: "Czy firma, która „tylko” tworzy oprogramowanie, może skorzystać z ulgi B+R?",
-        a: "Może. Tworzenie nowego oprogramowania lub istotne ulepszanie istniejącego może spełniać definicję prac rozwojowych; rutynowe zmiany i utrzymanie – nie. Ja analizuję techniczną stronę projektów, a licencjonowany doradca podatkowy ocenia, czy ulga przysługuje.",
-      },
-      {
-        q: "Jakie podejście polecasz: PRINCE2, praktyki PMI, agile czy hybrydę?",
-        a: "Żadnego z góry. Patrzę na rodzaj projektów, kulturę, regulacje i ludzi, a potem wybieram – często połączenie kilku. Metoda ma służyć pracy, a nie odwrotnie.",
-      },
       {
         q: "Jak ustalamy koszt współpracy?",
         a: "Po pierwszej rozmowie proponuję na piśmie zakres i wycenę dopasowane do Twojej sytuacji. Pakiety mają określony zakres, więc z góry wiesz, co dostajesz.",

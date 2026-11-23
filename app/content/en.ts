@@ -43,6 +43,7 @@ export const en = {
     { href: "#services", label: "Services" },
     { href: "#start", label: "Ways in" },
     { href: "#ai", label: "AI" },
+    { href: "#leadership", label: "Leadership" },
     { href: "#results", label: "Results" },
     { href: "#about", label: "About" },
   ],
@@ -55,10 +56,16 @@ export const en = {
     lead: "A hands-on partner for technology leaders in two areas: AI in practice – from board-level strategy to systems that work in production – and technology leadership – from interim CTO to teams and projects that deliver. 20+ years of building engineering organisations.",
     primary: "Request a 30-minute intro call",
     secondary: "See the two pillars",
-    entriesTitle: "Two ways to start",
+    // One tile per pillar; `id` is the entry group it scrolls to (#start-<id>).
+    entriesTitle: "Where are you starting?",
     entries: [
-      { id: "project-rescue", offer: "IT project rescue", note: "Late or over-budget projects", icon: "lifebuoy" },
-      { id: "ai-health-check", offer: "AI system health check", note: "AI already in use", icon: "pulse" },
+      { id: "ai", offer: "AI in practice", note: "You want AI that works beyond the demo", icon: "spark" },
+      {
+        id: "leadership",
+        offer: "Technology leadership",
+        note: "You need a technology leader, or a project back on track",
+        icon: "compass",
+      },
     ],
   },
 
@@ -82,20 +89,16 @@ export const en = {
         a: "Without a test set and quality metrics, nobody knows. That is why AI work starts with evaluation — then the board decides on facts, not on a demo.",
       },
       {
+        q: "“Our developers use AI coding assistants. Is it actually paying off?”",
+        a: "Often nobody measures it. Clear rules for security and code quality, plus a few honest metrics, show where the gain is real — and where it is only a feeling.",
+      },
+      {
         q: "“We need a CTO, but not full-time. Is that possible?”",
         a: "Yes. A fractional CTO works a few days a month on strategy, architecture, the team and delivery — and an interim CTO bridges the gap until you hire.",
       },
       {
-        q: "“Our teams are agile, but large initiatives still slip. What's missing?”",
-        a: "Agile works within a team, but nobody coordinates across teams. Scaled Agile closes that gap — if it is rolled out with care.",
-      },
-      {
-        q: "“Every change needs five teams and a meeting. Why are we so slow?”",
-        a: "Usually it is the structure and the dependencies between teams, not the people. It can be diagnosed and fixed step by step.",
-      },
-      {
-        q: "“We build our own software. Are we eligible for R&D relief?”",
-        a: "Possibly — if the work meets the definition of R&D and is properly documented. Many companies never check. Past tax years that are not yet time-barred can also be reviewed.",
+        q: "“Our teams are agile, yet every larger change needs five teams and still slips. Why?”",
+        a: "Usually it is the structure and the dependencies between teams, not the people — and nobody coordinates across them. It can be diagnosed and fixed step by step.",
       },
     ],
   },
@@ -154,7 +157,7 @@ export const en = {
         number: "02",
         title: "Technology leadership",
         tagline: "An experienced technology leader when you need one.",
-        lead: "Leadership for your technology organisation — strategy, architecture, teams and delivery — for a defined period or a few days a month, without a permanent hire.",
+        lead: "A technology organisation that delivers predictably: clear direction, sound architecture, strong leaders and projects that land — with experienced leadership exactly where it is missing.",
         icon: "compass",
         services: [
           {
@@ -164,31 +167,31 @@ export const en = {
           },
           {
             title: "Technology and architecture audit",
-            text: "A clear picture of your systems: what works, what blocks growth, what the cloud really costs, and what to fix first.",
+            text: "A clear picture of your systems: what works, what blocks growth, where the technical debt and security risks are, and what to fix first.",
             format: "3–5 weeks",
           },
           {
-            title: "Scaling engineering teams",
-            text: "Team structure, engineering processes and DevOps matched to the size of the company and the pace it needs.",
-            format: "workshops · project",
+            title: "Delivery and project portfolio",
+            text: "Predictable delivery across the portfolio: priorities, governance, a working PMO and reporting the board can rely on.",
+            format: "diagnosis · 2–4 months",
           },
           {
-            title: "Mentoring for technology leaders",
-            text: "One-on-one work with CTOs, VPs of Engineering and engineering managers on the decisions that can't be delegated — and on delegating the rest well.",
-            format: "1:1 sessions · monthly",
+            title: "Engineering processes and DevOps",
+            text: "How code gets from idea to production: CI/CD, quality, release management and developer productivity, matched to the pace the company needs.",
+            format: "2–4 months",
           },
           {
-            title: "Leadership programme for engineering managers",
-            text: "Delegation with clear decision levels, motivation, self-organising teams, candid feedback and performance conversations.",
-            format: "cohort · 3–6 months",
+            title: "Mentoring and leadership development",
+            text: "One-on-one mentoring for CTOs and VPs of Engineering, and a programme for engineering managers: delegation with clear decision levels, candid feedback and self-organising teams.",
+            format: "1:1 monthly · cohort 3–6 months",
           },
           {
-            title: "Talent and leadership bench",
-            text: "Hiring processes for leaders and engineers, talent reviews and succession plans for key roles.",
+            title: "Hiring and succession for key roles",
+            text: "Hiring processes for leaders and engineers, talent reviews and succession plans, so the organisation does not depend on a few people.",
             format: "project · ongoing support",
           },
         ],
-        note: "Many engagements grow into ongoing support: a few days a month as a fractional CTO or a trusted adviser to the leadership team.",
+        note: "Project rescue, project management, Scaled Agile and organisation design are run as focused engagements — see the ways in below.",
       },
     ] as Pillar[],
   },
@@ -204,6 +207,7 @@ export const en = {
     cta: "Ask about this",
     groups: [
       {
+        id: "ai",
         pillar: "AI in practice",
         icon: "spark",
         items: [
@@ -228,24 +232,10 @@ export const en = {
             text: "For investors: is the company's AI a real advantage, or a wrapper around someone else's model? Technology, data, costs and regulatory risk.",
             icon: "search",
           },
-          {
-            id: "cost-optimisation",
-            title: "Cloud and AI cost optimisation",
-            time: "3–6 weeks",
-            text: "A review of your cloud and AI model bills, with savings you can implement and measure.",
-            icon: "chart",
-          },
-          {
-            id: "rd-review",
-            title: "Technical R&D review (Poland)",
-            time: "1–2 weeks",
-            text: "Software and AI work that may qualify for R&D tax relief, identified and documented. A licensed tax adviser assesses eligibility.",
-            icon: "coins",
-            link: { href: "#ai-rd", label: "How it works" },
-          },
         ] as Entry[],
       },
       {
+        id: "leadership",
         pillar: "Technology leadership",
         icon: "compass",
         items: [
@@ -287,34 +277,56 @@ export const en = {
         ] as Entry[],
       },
     ],
+    // Entry points that serve both pillars.
+    shared: {
+      title: "For both pillars",
+      items: [
+        {
+          id: "cost-optimisation",
+          title: "Cloud and AI cost optimisation",
+          time: "3–6 weeks",
+          text: "A review of your cloud and AI model bills, with savings you can implement and measure.",
+          icon: "chart",
+        },
+        {
+          id: "rd-review",
+          title: "Technical R&D review (Poland)",
+          time: "1–2 weeks",
+          text: "Software and AI work that may qualify for R&D tax relief, identified and documented. A licensed tax adviser assesses eligibility.",
+          icon: "coins",
+          link: { href: "#ai-rd", label: "How it works" },
+        },
+      ] as Entry[],
+    },
   },
 
+  // What stands behind each pillar: the experience (two cards) and the
+  // principles. Rendered by the same component for #ai and #leadership.
   aiExpertise: {
-    kicker: "AI expertise",
+    kicker: "Behind pillar 01",
     title: "Both sides of AI:",
     accent: "the boardroom and the build.",
+    lead: "AI projects fail in two places: in the boardroom, when expectations are built on a demo, and in the build, when nobody measures quality and cost. I work on both sides.",
     items: [
       {
-        title: "Strategic and conceptual",
-        text: "I understand how models learn, what they can really do, where their limits are, and what that means for the business and its people — and I can explain it clearly to a board.",
+        title: "In the boardroom",
+        text: "A background in applied mathematics: I understand how models learn, why they fail and where their limits are — and I explain it to boards in plain language.",
         points: [
-          "How models learn — and why they fail",
-          "Realistic capabilities and hard limits",
-          "Impact on the business, on roles and on people",
-          "Clear explanations for boards and leadership teams",
+          "Board and leadership briefings without the hype",
+          "Business cases with an honest “don't do it” option",
+          "Impact on roles and people, not only on processes",
+          "AI policy and EU AI Act readiness from the start",
         ],
         icon: "compass",
       },
       {
-        title: "Engineering",
-        text: "I know how to build production applications on foundation models — and what it takes to keep them reliable, safe and affordable.",
+        title: "In the build",
+        text: "Hands-on experience of delivering AI and machine-learning systems — from the first prototype to production.",
         points: [
-          "Retrieval over company documents (RAG)",
-          "AI agents that use your tools and systems",
-          "Evaluation and quality metrics",
-          "Fine-tuning and data preparation",
-          "Cost and latency optimisation",
-          "Monitoring, guardrails and security",
+          "An AI-based solution for aircraft weight and balance, from concept to delivery",
+          "Machine-learning products for airline retailing, with a global technology partner",
+          "Hands-on with RAG, agents and evaluation on today's foundation models",
+          "Cost, latency and security built in from the first prototype",
         ],
         icon: "spark",
       },
@@ -412,7 +424,7 @@ export const en = {
       {
         when: "Weeks 1–3",
         title: "Diagnosis",
-        text: "A review of technology, team, processes and R&D potential. In writing: what we will do, the expected result, and how we will measure it.",
+        text: "A review of technology, team and processes. In writing: what we will do, the expected result, and how we will measure it.",
       },
       {
         when: "Weeks 4–12",
@@ -437,9 +449,41 @@ export const en = {
     ],
   },
 
+  leadership: {
+    kicker: "Behind pillar 02",
+    title: "Leadership in practice:",
+    accent: "people, structure, delivery.",
+    lead: "Technology organisations slow down for two reasons: the structure stops fitting the size of the company, and delivery loses its rhythm. I have fixed both, from the inside.",
+    items: [
+      {
+        title: "Organisation and people",
+        text: "Building and leading engineering organisations — from a few teams to more than 300 engineers in several countries.",
+        points: [
+          "An engineering organisation grown from 20 to 150+ engineers in 3 years",
+          "Team structure and architecture shaped together",
+          "Leaders developed from within, with clear decision levels",
+          "Candid feedback as everyday practice, not an annual event",
+        ],
+        icon: "compass",
+      },
+      {
+        title: "Delivery",
+        text: "Large programmes in banking, airline technology and energy — delivered with the method that fits, not the one in fashion.",
+        points: [
+          "Software delivery cycle time cut by half",
+          "Scaled Agile rolled out in several organisations",
+          "PMP®, PRINCE2® and Scrum, tailored to the company",
+          "Portfolio governance the board can rely on",
+        ],
+        icon: "layers",
+      },
+    ],
+  },
+
   orgPrinciples: {
     kicker: "How I build organisations",
-    title: "Four principles",
+    title: "Four principles,",
+    accent: "one system.",
     items: [
       {
         title: "Design teams for flow",
@@ -522,18 +566,6 @@ export const en = {
     kicker: "FAQ",
     title: "Frequently asked questions",
     items: [
-      {
-        q: "Why only two pillars, when you also do project management, SAFe and R&D relief?",
-        a: "Because that is what clients really buy from me: AI that works in practice, and leadership for their technology organisation. Project management, Scaled Agile, organisation design, due diligence and R&D documentation are the concrete ways to get there — often the first step of a longer cooperation.",
-      },
-      {
-        q: "Can a company that “only” builds software claim R&D relief?",
-        a: "It may. Creating new software or significantly improving existing software can meet the definition of development work under Polish law; routine changes and maintenance do not. I review the technical side of the projects, and a licensed tax adviser assesses whether the relief applies.",
-      },
-      {
-        q: "Which approach do you recommend: PRINCE2, PMI practices, agile or hybrid?",
-        a: "None by default. I look at the type of projects, the culture, the regulations and the people, and then choose — often a combination. A method should serve the work, not the other way round.",
-      },
       {
         q: "How do we agree on the cost of working together?",
         a: "After the first call I propose a scope and a quote in writing, matched to your situation. Packages have a defined scope, so you know up front what you get.",

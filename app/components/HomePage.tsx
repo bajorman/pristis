@@ -37,10 +37,118 @@ function Check() {
   );
 }
 
+type Entry = Content["entries"]["groups"][number]["items"][number];
+
+// One entry point card in the "Ways in" section.
+function EntryCard({ e, cta }: { e: Entry; cta: string }) {
+  return (
+    <div
+      id={entryAnchor(e.id)}
+      className="flex gap-4 rounded-3xl bg-paper p-5 ring-copper ring-offset-4 ring-offset-stone target:ring-2 sm:p-6"
+    >
+      <span className="mt-0.5 shrink-0 text-copper">
+        <Icon name={e.icon} className="size-6" />
+      </span>
+      <div className="flex-1">
+        <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+          <h3 className="font-serif text-xl font-medium">{e.title}</h3>
+          <span className="text-xs font-bold uppercase tracking-[0.14em] text-copper">{e.time}</span>
+        </div>
+        <p className="mt-2 text-[0.95rem] leading-relaxed text-muted">{e.text}</p>
+        <div className="mt-3 flex flex-wrap gap-x-5 gap-y-1">
+          <a
+            href={mailto(e.title)}
+            data-umami-event="Package enquiry"
+            data-umami-event-package={e.id}
+            className="inline-flex items-center gap-1.5 text-sm font-semibold text-ink hover:text-copper"
+          >
+            {cta} <Icon name="arrow" className="size-4" />
+          </a>
+          {e.link && (
+            <a href={e.link.href} className="text-sm font-semibold text-copper hover:text-ink">
+              {e.link.label}
+            </a>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// "Behind pillar 0X": the experience behind a pillar (two navy cards) and the
+// principles that guide the work. Used for #ai and #leadership.
+function PillarDepth({
+  id,
+  expertise,
+  principles,
+  tinted = false,
+}: {
+  id: string;
+  expertise: Content["aiExpertise"];
+  principles: Content["aiPrinciples"];
+  tinted?: boolean;
+}) {
+  return (
+    <section id={id} className={tinted ? "bg-stone/60" : undefined}>
+      <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-24">
+        <SectionTitle
+          kicker={expertise.kicker}
+          title={
+            <>
+              {`${expertise.title} `}
+              <em className="text-copper">{expertise.accent}</em>
+            </>
+          }
+        />
+        <p className="-mt-6 mb-12 max-w-3xl text-lg leading-relaxed text-muted">{expertise.lead}</p>
+        <div className="grid gap-6 lg:grid-cols-2">
+          {expertise.items.map((e) => (
+            <article key={e.title} className="grain flex flex-col rounded-[2rem] bg-navy p-7 text-white sm:p-9">
+              <span className="inline-flex self-start rounded-2xl bg-copper-light p-3 text-ink">
+                <Icon name={e.icon} />
+              </span>
+              <h3 className="mt-6 font-serif text-3xl font-medium leading-tight">{e.title}</h3>
+              <p className="mt-4 text-lg leading-relaxed text-white/80">{e.text}</p>
+              <ul className="mt-6 grid gap-2.5">
+                {e.points.map((pt) => (
+                  <li key={pt} className="flex gap-3 text-[0.95rem] text-white/90">
+                    <Check />
+                    {pt}
+                  </li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </div>
+
+        <div className="mb-8 mt-20">
+          <Kicker>{principles.kicker}</Kicker>
+          <h3 className="mt-3 font-serif text-3xl font-medium tracking-tight sm:text-4xl">
+            {`${principles.title} `}
+            <em className="text-copper">{principles.accent}</em>
+          </h3>
+        </div>
+        <ol className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {principles.items.map((p, i) => (
+            <li
+              key={p.title}
+              className={`flex flex-col rounded-3xl border border-line p-6 ${tinted ? "bg-paper" : "bg-white/50"}`}
+            >
+              <span className="font-serif text-lg text-copper">0{i + 1}</span>
+              <h4 className="mt-3 font-serif text-xl font-medium leading-snug">{p.title}</h4>
+              <p className="mt-3 text-[0.95rem] leading-relaxed text-muted">{p.text}</p>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+  );
+}
+
 // The home page, rendered once per language from that language's copy.
 export default function HomePage({ t }: { t: Content }) {
   const { hero, facts, industries, problems, pillars, entries, aiExpertise, aiPrinciples, aiRd } = t;
-  const { results, steps, models, orgPrinciples, about, bookshelf, faq, contact, ui } = t;
+  const { leadership, orgPrinciples, results, steps, models, about, bookshelf, faq, contact, ui } = t;
   const other = t.locale === "en" ? "pl" : "en";
 
   return (
@@ -157,7 +265,7 @@ export default function HomePage({ t }: { t: Content }) {
         <section className="bg-stone/60">
           <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-24">
             <SectionTitle kicker={problems.kicker} title={problems.title} />
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-6 md:grid-cols-2">
               {problems.items.map((p) => (
                 <figure key={p.q} className="flex flex-col rounded-3xl bg-paper p-7">
                   <blockquote className="font-serif text-xl leading-snug text-ink">{p.q}</blockquote>
@@ -239,7 +347,7 @@ export default function HomePage({ t }: { t: Content }) {
             <p className="-mt-6 mb-12 max-w-3xl text-lg leading-relaxed text-muted">{entries.lead}</p>
             <div className="grid gap-12 lg:grid-cols-2 lg:gap-8">
               {entries.groups.map((g) => (
-                <div key={g.pillar}>
+                <div key={g.id} id={entryAnchor(g.id)}>
                   <div className="mb-5 flex items-center gap-3 border-b-2 border-ink pb-4">
                     <span className="inline-flex rounded-xl bg-ink p-2 text-copper-light">
                       <Icon name={g.icon} className="size-5" />
@@ -251,94 +359,29 @@ export default function HomePage({ t }: { t: Content }) {
                   </div>
                   <div className="grid gap-4">
                     {g.items.map((e) => (
-                      <div
-                        key={e.id}
-                        id={entryAnchor(e.id)}
-                        className="flex gap-4 rounded-3xl bg-paper p-5 ring-copper ring-offset-4 ring-offset-stone target:ring-2 sm:p-6"
-                      >
-                        <span className="mt-0.5 shrink-0 text-copper">
-                          <Icon name={e.icon} className="size-6" />
-                        </span>
-                        <div className="flex-1">
-                          <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-                            <h3 className="font-serif text-xl font-medium">{e.title}</h3>
-                            <span className="text-xs font-bold uppercase tracking-[0.14em] text-copper">{e.time}</span>
-                          </div>
-                          <p className="mt-2 text-[0.95rem] leading-relaxed text-muted">{e.text}</p>
-                          <div className="mt-3 flex flex-wrap gap-x-5 gap-y-1">
-                            <a
-                              href={mailto(e.title)}
-                              data-umami-event="Package enquiry"
-                              data-umami-event-package={e.id}
-                              className="inline-flex items-center gap-1.5 text-sm font-semibold text-ink hover:text-copper"
-                            >
-                              {entries.cta} <Icon name="arrow" className="size-4" />
-                            </a>
-                            {e.link && (
-                              <a href={e.link.href} className="text-sm font-semibold text-copper hover:text-ink">
-                                {e.link.label}
-                              </a>
-                            )}
-                          </div>
-                        </div>
-                      </div>
+                      <EntryCard key={e.id} e={e} cta={entries.cta} />
                     ))}
                   </div>
                 </div>
               ))}
             </div>
+            <div className="mt-12">
+              <p className="mb-5 border-b-2 border-ink pb-4 font-serif text-xl font-medium text-ink">
+                {entries.shared.title}
+              </p>
+              <div className="grid gap-4 lg:grid-cols-2 lg:gap-8">
+                {entries.shared.items.map((e) => (
+                  <EntryCard key={e.id} e={e} cta={entries.cta} />
+                ))}
+              </div>
+            </div>
             <p className="mt-8 text-sm text-muted">{ui.timeNote}</p>
           </div>
         </section>
 
-        {/* AI expertise and how I approach AI */}
-        <section id="ai" className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-24">
-          <SectionTitle
-            kicker={aiExpertise.kicker}
-            title={
-              <>
-                {`${aiExpertise.title} `}
-                <em className="text-copper">{aiExpertise.accent}</em>
-              </>
-            }
-          />
-          <div className="grid gap-6 lg:grid-cols-2">
-            {aiExpertise.items.map((e) => (
-              <article key={e.title} className="grain flex flex-col rounded-[2rem] bg-navy p-7 text-white sm:p-9">
-                <span className="inline-flex self-start rounded-2xl bg-copper-light p-3 text-ink">
-                  <Icon name={e.icon} />
-                </span>
-                <h3 className="mt-6 font-serif text-3xl font-medium leading-tight">{e.title}</h3>
-                <p className="mt-4 text-lg leading-relaxed text-white/80">{e.text}</p>
-                <ul className="mt-6 grid gap-2.5 sm:grid-cols-2">
-                  {e.points.map((pt) => (
-                    <li key={pt} className="flex gap-3 text-[0.95rem] text-white/90">
-                      <Check />
-                      {pt}
-                    </li>
-                  ))}
-                </ul>
-              </article>
-            ))}
-          </div>
-
-          <div className="mb-8 mt-20">
-            <Kicker>{aiPrinciples.kicker}</Kicker>
-            <h3 className="mt-3 font-serif text-3xl font-medium tracking-tight sm:text-4xl">
-              {`${aiPrinciples.title} `}
-              <em className="text-copper">{aiPrinciples.accent}</em>
-            </h3>
-          </div>
-          <ol className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {aiPrinciples.items.map((p, i) => (
-              <li key={p.title} className="flex flex-col rounded-3xl border border-line bg-white/50 p-6">
-                <span className="font-serif text-lg text-copper">0{i + 1}</span>
-                <h3 className="mt-3 font-serif text-xl font-medium leading-snug">{p.title}</h3>
-                <p className="mt-3 text-[0.95rem] leading-relaxed text-muted">{p.text}</p>
-              </li>
-            ))}
-          </ol>
-        </section>
+        {/* What stands behind each pillar */}
+        <PillarDepth id="ai" expertise={aiExpertise} principles={aiPrinciples} />
+        <PillarDepth id="leadership" expertise={leadership} principles={orgPrinciples} tinted />
 
         {/* AI + R&D relief */}
         <section id="ai-rd" className="grain bg-navy text-white">
@@ -419,20 +462,6 @@ export default function HomePage({ t }: { t: Content }) {
               ))}
             </div>
           </div>
-
-          <div className="mb-8 mt-20">
-            <Kicker>{orgPrinciples.kicker}</Kicker>
-            <h3 className="mt-3 font-serif text-3xl font-medium tracking-tight sm:text-4xl">{orgPrinciples.title}</h3>
-          </div>
-          <ol className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {orgPrinciples.items.map((p, i) => (
-              <li key={p.title} className="flex flex-col rounded-3xl border border-line bg-white/50 p-6">
-                <span className="font-serif text-lg text-copper">0{i + 1}</span>
-                <h4 className="mt-3 font-serif text-xl font-medium leading-snug">{p.title}</h4>
-                <p className="mt-3 text-[0.95rem] leading-relaxed text-muted">{p.text}</p>
-              </li>
-            ))}
-          </ol>
         </section>
 
         {/* About */}
