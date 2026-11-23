@@ -18,6 +18,9 @@ const rates = [
 
 const MAX = 1_000_000_000;
 
+// Official information on CIT rates, including the conditions of the 9% rate.
+const CIT_INFO = "https://www.podatki.gov.pl/cit/";
+
 type Strings = Content["calc"];
 
 // Whole PLN amounts only: digits, optionally grouped in thousands with ONE kind
@@ -147,20 +150,37 @@ export default function BrCalculator({ t }: { t: Strings }) {
               </label>
             ))}
           </div>
-          {rateId === "cit9" && <p className="mt-2 text-xs text-white/55">{t.cit9Note}</p>}
+          {rateId === "cit9" && (
+            <p className="mt-2 text-xs text-white/55">
+              {t.cit9Note}{" "}
+              <a href={CIT_INFO} target="_blank" rel="noopener noreferrer" className="text-copper-light underline">
+                {t.cit9Link}
+              </a>
+            </p>
+          )}
         </fieldset>
       </div>
 
+      {/* Costs → extra deduction → estimated tax reduction, each on its own line. */}
       <div className="mt-8 border-t border-white/10 pt-6" aria-live="polite">
-        <p className="text-sm text-white/70">{t.effect}</p>
+        {valid ? (
+          <dl className="grid gap-1 text-sm text-white/70">
+            <div className="flex justify-between gap-4">
+              <dt>{t.costs}</dt>
+              <dd className="tabular-nums">{pln.format(staffParsed.value + otherParsed.value)}</dd>
+            </div>
+            <div className="flex justify-between gap-4">
+              <dt>{t.deduction}</dt>
+              <dd className="tabular-nums">{pln.format(deduction)}</dd>
+            </div>
+          </dl>
+        ) : (
+          <p className="text-sm text-red-200">{t.invalid}</p>
+        )}
+        <p className="mt-5 text-sm text-white/70">{t.effect}</p>
         <p className="mt-1 font-serif text-4xl font-semibold text-white tabular-nums sm:text-5xl">
           {valid ? pln.format(effect) : "—"}
         </p>
-        {valid && (
-          <p className="mt-3 text-sm text-white/70">
-            {t.deduction} {pln.format(deduction)}.
-          </p>
-        )}
       </div>
       <p className="mt-5 text-xs leading-relaxed text-white/45">{t.disclaimer}</p>
     </div>

@@ -39,6 +39,13 @@ body {
   color: var(--ink);
 }
 
+/* A clearly visible keyboard focus on every interactive element. */
+:focus-visible {
+  outline: 2px solid var(--copper);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
 ::selection {
   background: var(--copper);
   color: #fff;

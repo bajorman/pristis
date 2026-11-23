@@ -41,6 +41,14 @@ export default function SiteHeader({ nav, ui, primary, switchHref, switchLang }:
   );
 
   return (
+    <>
+    {/* Skip link: first stop for keyboard users, visible only on focus. */}
+    <a
+      href="#top"
+      className="sr-only z-50 rounded-full bg-ink px-5 py-2.5 font-semibold text-white focus:not-sr-only focus:fixed focus:left-4 focus:top-3"
+    >
+      {ui.skip}
+    </a>
     <header className="sticky top-0 z-30 border-b border-line/70 bg-paper/90 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-4 py-3.5 sm:px-6">
         <a href="#top" aria-label={ui.home} onClick={() => setOpen(false)}>
@@ -110,5 +118,6 @@ export default function SiteHeader({ nav, ui, primary, switchHref, switchLang }:
         </nav>
       )}
     </header>
+    </>
   );
 }

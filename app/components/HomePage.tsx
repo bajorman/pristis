@@ -2,6 +2,7 @@ import Image from "next/image";
 import type { Content } from "../content/en";
 import { asset, entryAnchor, mailto, paths, site } from "../site";
 import BrCalculator from "./BrCalculator";
+import CopyEmail from "./CopyEmail";
 import Icon from "./Icon";
 import SiteFooter from "./SiteFooter";
 import SiteHeader from "./SiteHeader";
@@ -39,7 +40,7 @@ function Check() {
 
 type Entry = Content["entries"]["groups"][number]["items"][number];
 
-// One entry point card in the "Ways in" section.
+// One engagement card in the "Engagements" (#start) section.
 function EntryCard({ e, cta }: { e: Entry; cta: string }) {
   return (
     <div
@@ -166,9 +167,9 @@ export default function HomePage({ t }: { t: Content }) {
           <div className="mx-auto grid max-w-6xl items-center gap-12 px-4 pb-16 pt-12 sm:px-6 md:pt-20 lg:grid-cols-[1.15fr_0.85fr] lg:pb-24">
             <div>
               <Kicker>{hero.eyebrow}</Kicker>
-              <h1 className="mt-5 font-serif text-5xl font-medium leading-[1.02] tracking-tight text-ink sm:text-6xl lg:text-7xl">
-                {`${hero.title} `}
-                <em className="font-normal text-copper">{hero.accent}</em>
+              <h1 className="mt-5 font-serif text-4xl font-medium leading-[1.05] tracking-tight text-ink sm:text-5xl lg:text-6xl">
+                <span className="block">{hero.title}</span>
+                <em className="mt-2 block font-normal text-copper">{hero.accent}</em>
               </h1>
               <p className="mt-7 max-w-xl text-lg leading-relaxed text-muted">{hero.lead}</p>
               <div className="mt-9 flex flex-wrap gap-3">
@@ -188,27 +189,6 @@ export default function HomePage({ t }: { t: Content }) {
                   {hero.secondary}
                 </a>
               </div>
-
-              <p className="mt-10 text-xs font-bold uppercase tracking-[0.22em] text-muted">{hero.entriesTitle}</p>
-              <div className="mt-3 grid max-w-xl gap-3 sm:grid-cols-2">
-                {hero.entries.map((e) => (
-                  <a
-                    key={e.id}
-                    href={`#${entryAnchor(e.id)}`}
-                    data-umami-event="Hero entry"
-                    data-umami-event-offer={e.id}
-                    className="group flex items-start gap-3 rounded-2xl border border-line bg-white/50 p-4 transition hover:border-copper/60 hover:bg-white"
-                  >
-                    <span className="mt-0.5 shrink-0 text-copper">
-                      <Icon name={e.icon} className="size-5" />
-                    </span>
-                    <span>
-                      <span className="block text-sm text-muted">{e.note}</span>
-                      <span className="mt-0.5 block font-semibold text-ink group-hover:text-copper">{e.offer}</span>
-                    </span>
-                  </a>
-                ))}
-              </div>
             </div>
 
             <div className="relative mx-auto w-full max-w-sm lg:max-w-none">
@@ -227,6 +207,33 @@ export default function HomePage({ t }: { t: Content }) {
                 <p className="font-serif text-lg font-semibold leading-tight">{about.name}</p>
                 <p className="text-sm text-muted">{ui.heroCaption}</p>
               </div>
+            </div>
+          </div>
+
+          {/* The three main offers, each with who it is for and its result. */}
+          <div className="mx-auto max-w-6xl px-4 pb-14 sm:px-6">
+            <p className="text-xs font-bold uppercase tracking-[0.22em] text-muted">{hero.entriesTitle}</p>
+            <div className="mt-3 grid gap-3 md:grid-cols-3">
+              {hero.entries.map((e) => (
+                <a
+                  key={e.id}
+                  href={`#${entryAnchor(e.id)}`}
+                  data-umami-event="Hero offer"
+                  data-umami-event-offer={e.id}
+                  className="group flex items-start gap-3 rounded-2xl border border-line bg-white/50 p-5 transition hover:border-copper/60 hover:bg-white"
+                >
+                  <span className="mt-0.5 shrink-0 text-copper">
+                    <Icon name={e.icon} className="size-5" />
+                  </span>
+                  <span>
+                    <span className="block text-sm text-muted">{e.note}</span>
+                    <span className="mt-0.5 block font-serif text-xl font-medium text-ink group-hover:text-copper">
+                      {e.offer}
+                    </span>
+                    <span className="mt-1.5 block text-sm text-ink/75">{e.result}</span>
+                  </span>
+                </a>
+              ))}
             </div>
           </div>
 
@@ -332,7 +339,7 @@ export default function HomePage({ t }: { t: Content }) {
           </div>
         </section>
 
-        {/* Ways in: entry points grouped by the pillar they lead into */}
+        {/* Engagements: concrete ways to start, grouped by the pillar they lead into */}
         <section id="start" className="bg-stone/60">
           <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
             <SectionTitle
@@ -369,7 +376,7 @@ export default function HomePage({ t }: { t: Content }) {
               <p className="mb-5 border-b-2 border-ink pb-4 font-serif text-xl font-medium text-ink">
                 {entries.shared.title}
               </p>
-              <div className="grid gap-4 lg:grid-cols-2 lg:gap-8">
+              <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
                 {entries.shared.items.map((e) => (
                   <EntryCard key={e.id} e={e} cta={entries.cta} />
                 ))}
@@ -379,47 +386,8 @@ export default function HomePage({ t }: { t: Content }) {
           </div>
         </section>
 
-        {/* What stands behind each pillar */}
-        <PillarDepth id="ai" expertise={aiExpertise} principles={aiPrinciples} />
-        <PillarDepth id="leadership" expertise={leadership} principles={orgPrinciples} tinted />
-
-        {/* AI + R&D relief */}
-        <section id="ai-rd" className="grain bg-navy text-white">
-          <div className="mx-auto grid max-w-6xl gap-12 px-4 py-20 sm:px-6 sm:py-28 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
-            <div>
-              <Kicker light>{aiRd.kicker}</Kicker>
-              <h2 className="mt-3 font-serif text-4xl font-medium leading-[1.08] tracking-tight sm:text-5xl">
-                {`${aiRd.title} `}
-                <em className="text-copper-light">{aiRd.accent}</em>
-              </h2>
-              {aiRd.text.map((p) => (
-                <p key={p} className="mt-6 text-lg leading-relaxed text-white/75">
-                  {p}
-                </p>
-              ))}
-              <ul className="mt-8 space-y-3">
-                {aiRd.points.map((pt) => (
-                  <li key={pt} className="flex gap-3">
-                    <Check />
-                    <span className="text-white/90">{pt}</span>
-                  </li>
-                ))}
-              </ul>
-              <a
-                href={mailto(aiRd.ctaSubject)}
-                data-umami-event="R&D review request"
-                className="mt-10 inline-flex items-center gap-2 rounded-full bg-copper-light px-6 py-3.5 font-semibold text-ink transition hover:bg-white"
-              >
-                {aiRd.cta}
-                <Icon name="arrow" className="size-4" />
-              </a>
-            </div>
-            <BrCalculator t={t.calc} />
-          </div>
-        </section>
-
         {/* Results */}
-        <section id="results" className="bg-stone/60">
+        <section id="results">
           <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
             <SectionTitle kicker={results.kicker} title={results.title} />
             <p className="-mt-6 mb-10 max-w-3xl text-muted">{results.note}</p>
@@ -434,6 +402,10 @@ export default function HomePage({ t }: { t: Content }) {
             </div>
           </div>
         </section>
+
+        {/* What stands behind each pillar */}
+        <PillarDepth id="ai" expertise={aiExpertise} principles={aiPrinciples} />
+        <PillarDepth id="leadership" expertise={leadership} principles={orgPrinciples} tinted />
 
         {/* How I work */}
         <section id="how-i-work" className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
@@ -530,6 +502,41 @@ export default function HomePage({ t }: { t: Content }) {
           </div>
         </section>
 
+        {/* AI + R&D relief */}
+        <section id="ai-rd" className="grain bg-navy text-white">
+          <div className="mx-auto grid max-w-6xl gap-12 px-4 py-20 sm:px-6 sm:py-28 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
+            <div>
+              <Kicker light>{aiRd.kicker}</Kicker>
+              <h2 className="mt-3 font-serif text-4xl font-medium leading-[1.08] tracking-tight sm:text-5xl">
+                {`${aiRd.title} `}
+                <em className="text-copper-light">{aiRd.accent}</em>
+              </h2>
+              {aiRd.text.map((p) => (
+                <p key={p} className="mt-6 text-lg leading-relaxed text-white/75">
+                  {p}
+                </p>
+              ))}
+              <ul className="mt-8 space-y-3">
+                {aiRd.points.map((pt) => (
+                  <li key={pt} className="flex gap-3">
+                    <Check />
+                    <span className="text-white/90">{pt}</span>
+                  </li>
+                ))}
+              </ul>
+              <a
+                href={mailto(aiRd.ctaSubject)}
+                data-umami-event="R&D review request"
+                className="mt-10 inline-flex items-center gap-2 rounded-full bg-copper-light px-6 py-3.5 font-semibold text-ink transition hover:bg-white"
+              >
+                {aiRd.cta}
+                <Icon name="arrow" className="size-4" />
+              </a>
+            </div>
+            <BrCalculator t={t.calc} />
+          </div>
+        </section>
+
         {/* FAQ */}
         <section className="mx-auto max-w-4xl px-4 py-20 sm:px-6 sm:py-28">
           <SectionTitle kicker={faq.kicker} title={faq.title} />
@@ -570,14 +577,7 @@ export default function HomePage({ t }: { t: Content }) {
                 >
                   {contact.button} <Icon name="arrow" className="size-4" />
                 </a>
-                <a
-                  href={mailto(contact.subject)}
-                  data-umami-event="Email me"
-                  data-umami-event-location="contact-address"
-                  className="break-all text-center text-sm text-white/85 hover:text-white"
-                >
-                  {site.email}
-                </a>
+                <CopyEmail copy={contact.copy} copied={contact.copied} />
                 <a
                   href={site.linkedin}
                   data-umami-event="LinkedIn"

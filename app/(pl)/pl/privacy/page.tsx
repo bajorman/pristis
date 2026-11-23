@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import PrivacyPage from "../../components/PrivacyPage";
-import { pl } from "../../content/pl";
+import PrivacyPage from "../../../components/PrivacyPage";
+import { pl } from "../../../content/pl";
 
 export const metadata: Metadata = {
   title: pl.meta.privacyTitle,

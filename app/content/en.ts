@@ -30,10 +30,10 @@ export type Entry = {
 export const en = {
   locale: "en" as Locale,
   meta: {
-    title: "Pristis Management — AI in practice and technology leadership",
+    title: "Pristis Management — AI system reviews, IT project rescue, fractional CTO",
     description:
-      "Consulting and mentoring for technology leaders in two areas: AI in practice (strategy, RAG, AI agents, evaluation, production) and technology leadership (interim and fractional CTO, audits, project rescue, Scaled Agile, organisation design). Technical support for R&D tax relief in Poland.",
-    ogTitle: "Pristis Management — build engineering organisations that scale",
+      "Independent help for CEOs and technology leaders: assessing the quality and cost of AI systems before they scale, recovering troubled IT projects, and fractional or interim CTO leadership. B2B, in English and Polish.",
+    ogTitle: "Pristis Management — get AI ready for production, get projects back on track",
     ogLocale: "en_GB",
     privacyTitle: "Privacy",
     privacyDescription: "How PRISTIS Paweł Bajorek (Pristis Management) handles personal data.",
@@ -41,29 +41,43 @@ export const en = {
 
   nav: [
     { href: "#services", label: "Services" },
-    { href: "#start", label: "Ways in" },
+    { href: "#start", label: "Engagements" },
+    { href: "#results", label: "Results" },
     { href: "#ai", label: "AI" },
     { href: "#leadership", label: "Leadership" },
-    { href: "#results", label: "Results" },
     { href: "#about", label: "About" },
   ],
 
   hero: {
-    eyebrow: "Consulting & mentoring for technology leaders",
+    eyebrow: "Consulting for CEOs and technology leaders",
     // The words in `accent` are set in italic accent colour after `title`.
-    title: "Build engineering organisations",
-    accent: "that scale.",
-    lead: "A hands-on partner for technology leaders in two areas: AI in practice – from board-level strategy to systems that work in production – and technology leadership – from interim CTO to teams and projects that deliver. 20+ years of building engineering organisations.",
-    primary: "Request a 30-minute intro call",
-    secondary: "See the two pillars",
-    // One tile per pillar; `id` is the entry group it scrolls to (#start-<id>).
-    entriesTitle: "Where are you starting?",
+    title: "Get AI ready for production.",
+    accent: "Get technology projects back on track.",
+    lead: "I help CEOs and technology leaders assess the quality and cost of AI systems, recover troubled IT projects and lead engineering teams as a fractional CTO. 20+ years of building engineering organisations — and you work directly with me.",
+    primary: "Discuss your project (30 min)",
+    secondary: "See all services",
+    // The three main offers; `id` is the engagement card it scrolls to.
+    entriesTitle: "Most clients start with",
     entries: [
-      { id: "ai", offer: "AI in practice", note: "You want AI that works beyond the demo", icon: "spark" },
       {
-        id: "leadership",
-        offer: "Technology leadership",
-        note: "You need a technology leader, or a project back on track",
+        id: "ai-health-check",
+        offer: "AI system review",
+        note: "After an AI pilot",
+        result: "Quality, cost and a list of fixes in 2 weeks",
+        icon: "pulse",
+      },
+      {
+        id: "project-rescue",
+        offer: "IT project rescue",
+        note: "Late or over budget",
+        result: "Diagnosis and a 30/60/90-day plan in 2 weeks",
+        icon: "lifebuoy",
+      },
+      {
+        id: "fractional-cto",
+        offer: "Fractional CTO",
+        note: "A gap in technology leadership",
+        result: "Senior leadership a few days a month",
         icon: "compass",
       },
     ],
@@ -103,106 +117,90 @@ export const en = {
     ],
   },
 
-  // The two pillars of the offer, shown first and largest.
+  // The two pillars of the offer: the full scope of services.
   pillars: {
     kicker: "Services",
     title: "Two pillars,",
     accent: "one partner.",
-    lead: "Everything I do comes down to two things: making AI work in practice, and leading technology organisations that deliver. The more focused services further down are ways into these two.",
+    lead: "Everything I do comes down to two things: making AI work in practice, and leading technology organisations that deliver. Each service below has a clear place: what it decides, and what comes after it.",
     cta: "Discuss your situation",
     items: [
       {
         id: "pillar-ai",
         number: "01",
         title: "AI in practice",
-        tagline: "From the boardroom to production.",
-        lead: "From board-level understanding to systems that work in production — on your data, in your processes, at a cost you control.",
+        tagline: "Evidence before scale.",
+        lead: "AI that works on your data and in your processes, with quality and cost measured before anyone decides to scale it.",
         icon: "spark",
         services: [
           {
-            title: "AI strategy and executive briefings",
-            text: "What AI can and cannot do: how models learn, where they fail, and what the risks are. Board decisions based on understanding, not hype.",
-            format: "workshop · 1–2 days",
-          },
-          {
-            title: "Use-case selection: build, buy or skip",
-            text: "Choosing the use cases with a real return — including an honest “don't do it” when AI doesn't pay off.",
-            format: "3–4 weeks",
+            title: "AI strategy and use-case selection",
+            text: "A decision workshop for the board: priorities, risks and the next decisions. If needed, a strategy with a plan, owners and funding — and for each use case a build, buy or defer option with a baseline and its risks.",
+            format: "workshop · 1–2 days · strategy 3–4 weeks",
           },
           {
             title: "AI application engineering",
-            text: "Architecture and technical leadership of the build: assistants on company knowledge (RAG), agents that use your tools, model selection, prompting, retrieval or fine-tuning.",
+            text: "I design the architecture and lead the build: assistants on company knowledge (RAG), agents that use your tools, model selection. Who implements, who maintains the system and how the code is handed over are agreed up front.",
             format: "6–12 weeks · project",
           },
           {
-            title: "AI evaluation and quality",
-            text: "Test sets, quality criteria and metrics tied to business outcomes — so the decision to scale rests on evidence, not on a good demo.",
-            format: "2–4 weeks",
-          },
-          {
             title: "Production readiness (LLMOps)",
-            text: "Guardrails, protection against prompt injection, monitoring, feedback loops, and the cost and latency of every answer.",
+            text: "The next step after an AI system review: acceptance criteria, guardrails and protection against prompt injection, monitoring, runbooks and a named owner of the system.",
             format: "3–6 weeks",
           },
           {
             title: "AI for engineering teams",
-            text: "Rolling out AI coding assistants and agents, setting security rules, and measuring the real gain in productivity.",
+            text: "Rules for using AI coding assistants and agents safely, and a measured rollout: lead time for changes, rework after review and regressions, against a baseline.",
             format: "4–8 weeks",
           },
         ],
-        note: "AI governance — an AI use policy, a register of AI systems and readiness for the EU AI Act — is built into every AI project.",
+        note: "AI governance is scoped to each use case: an AI use policy, a register of AI systems and an initial AI Act risk classification. The legal assessment stays with your lawyers.",
       },
       {
         id: "pillar-leadership",
         number: "02",
         title: "Technology leadership",
-        tagline: "An experienced technology leader when you need one.",
-        lead: "A technology organisation that delivers predictably: clear direction, sound architecture, strong leaders and projects that land — with experienced leadership exactly where it is missing.",
+        tagline: "Experienced leadership where it is missing.",
+        lead: "A technology organisation that delivers predictably: clear direction, sound architecture, strong leaders and projects that land — as a fractional CTO a few days a month, or as an interim CTO for a transition.",
         icon: "compass",
         services: [
           {
-            title: "Interim and fractional CTO",
-            text: "Technology leadership for a defined period or a few days a month: strategy, architecture, team and delivery.",
-            format: "from 2 days a month",
+            title: "Interim CTO",
+            text: "For a vacancy or a period of transition: the mandate, availability, working rhythm and the handover to a permanent leader are agreed before we start.",
+            format: "defined period",
           },
           {
             title: "Technology and architecture audit",
-            text: "A clear picture of your systems: what works, what blocks growth, where the technical debt and security risks are, and what to fix first.",
+            text: "For companies without an acute crisis: what works, what blocks growth, where the technical debt is. You get a risk register and a plan of changes. A security penetration test is a separate service.",
             format: "3–5 weeks",
           },
           {
-            title: "Delivery and project portfolio",
-            text: "Predictable delivery across the portfolio: priorities, governance, a working PMO and reporting the board can rely on.",
-            format: "diagnosis · 2–4 months",
+            title: "Delivery and project management",
+            text: "Predictable delivery across projects: a short diagnosis with a written result, then changes rolled out over 2–4 months — priorities, portfolio governance, a working PMO and a method that fits (PRINCE2, PMI practices, agile or a mix).",
+            format: "diagnosis 2–3 weeks · changes 2–4 months",
           },
           {
-            title: "Engineering processes and DevOps",
-            text: "How code gets from idea to production: CI/CD, quality, release management and developer productivity, matched to the pace the company needs.",
+            title: "Engineering processes and organisation design",
+            text: "Usually after an audit or as part of a CTO role: team structure for fast flow, fewer dependencies, CI/CD and release management. Measured by flow, the number of hand-offs and lead time to production.",
             format: "2–4 months",
           },
           {
-            title: "Mentoring and leadership development",
-            text: "One-on-one mentoring for CTOs and VPs of Engineering, and a programme for engineering managers: delegation with clear decision levels, candid feedback and self-organising teams.",
+            title: "Leadership development and hiring",
+            text: "One-on-one mentoring for CTOs and VPs of Engineering, a programme for engineering managers, and help with hiring for key roles: the process, taking part in assessment, and a succession plan.",
             format: "1:1 monthly · cohort 3–6 months",
           },
-          {
-            title: "Hiring and succession for key roles",
-            text: "Hiring processes for leaders and engineers, talent reviews and succession plans, so the organisation does not depend on a few people.",
-            format: "project · ongoing support",
-          },
         ],
-        note: "Project rescue, project management, Scaled Agile and organisation design are run as focused engagements — see the ways in below.",
+        note: "IT project rescue, fractional CTO and Scaled Agile are run as engagements with a defined start — see below.",
       },
     ] as Pillar[],
   },
 
-  // Entry points: short packages and focused services, grouped by the pillar
-  // they lead into.
+  // Engagements: concrete ways to start, grouped by the pillar they lead into.
   entries: {
-    kicker: "Ways in",
+    kicker: "Engagements",
     title: "Start with one concrete step,",
     accent: "grow into a partnership.",
-    lead: "Each pillar has clear entry points: a short package with a defined result, or a focused engagement. Many clients start with one of them and continue with ongoing support.",
+    lead: "Each engagement has a defined result, the data it needs and a clear handover. Timeframes are typical and run from the moment we have access to the people and the data.",
     leadsTo: "Leads into",
     cta: "Ask about this",
     groups: [
@@ -212,25 +210,25 @@ export const en = {
         icon: "spark",
         items: [
           {
-            id: "ai-sprint",
-            title: "AI Sprint",
-            time: "5 days",
-            text: "A workshop with the board, one process selected, and a working AI prototype on your data — with a quality test set, so the build-or-not decision rests on evidence.",
-            icon: "bolt",
-          },
-          {
             id: "ai-health-check",
-            title: "AI system health check",
+            title: "AI system review",
             time: "2 weeks",
-            text: "A review of an AI application you already run: answer quality, cost per request, latency, security and monitoring. A list of fixes ranked by impact.",
+            text: "For CTOs and product owners after a pilot. One system or process, a test sample of real cases: answer quality, cost per request, latency, security and monitoring. You get a list of fixes ranked by impact and a recommendation for the next step.",
             icon: "pulse",
           },
           {
-            id: "ai-due-diligence",
-            title: "AI due diligence",
-            time: "2 weeks",
-            text: "For investors: is the company's AI a real advantage, or a wrapper around someone else's model? Technology, data, costs and regulatory risk.",
-            icon: "search",
+            id: "ai-sprint",
+            title: "AI Sprint",
+            time: "5 days",
+            text: "One process, an agreed data sample and a limited prototype with a test result, so the build-or-not decision rests on evidence. It needs a sponsor, access to data, an approved environment and no complex integration; without data, we start with a diagnosis.",
+            icon: "bolt",
+          },
+          {
+            id: "ai-coding-pilot",
+            title: "AI coding assistants pilot",
+            time: "4–6 weeks",
+            text: "Security and code-quality rules, then a pilot on comparable work: lead time for changes, rework after review and regressions, measured against a baseline. You see whether the gain is real.",
+            icon: "chart",
           },
         ] as Entry[],
       },
@@ -243,56 +241,49 @@ export const en = {
             id: "project-rescue",
             title: "IT project rescue",
             time: "2 weeks",
-            text: "Late, over budget, team exhausted? An independent diagnosis and a recovery plan you can defend in front of the board.",
+            text: "For the CEO, CIO or sponsor of a late or over-budget project. An independent diagnosis and a 30/60/90-day recovery plan you can defend in front of the board. Leading the recovery is a separate next stage.",
             icon: "lifebuoy",
           },
           {
-            id: "tech-due-diligence",
-            title: "Technical due diligence",
-            time: "2–4 weeks",
-            text: "An independent assessment of a company's technology, architecture, team and risks before an investment — for VC and PE funds.",
-            icon: "search",
-          },
-          {
-            id: "project-management",
-            title: "Project management and methodology",
-            time: "diagnosis 2–3 weeks",
-            text: "PRINCE2, PMI practices, agile or a tailored mix — chosen to fit your company. PMO, portfolio governance and coaching for project managers.",
-            icon: "layers",
+            id: "fractional-cto",
+            title: "Fractional CTO",
+            time: "from 2 days a month",
+            text: "Senior technology leadership without a full-time hire: architecture, priorities, the team and delivery, decided together with you in a fixed rhythm. A broader mandate needs more time each month, agreed up front.",
+            icon: "compass",
           },
           {
             id: "scaled-agile",
             title: "Scaled Agile (SAFe®)",
-            time: "first train in 8–12 weeks",
-            text: "Agile beyond a single team: readiness assessment, value streams, Agile Release Trains and the first PI Planning events.",
+            time: "first ART in 8–12 weeks",
+            text: "For several teams working on one product. After assessing readiness, the mandate and team availability: value streams and the launch of the first Agile Release Train (ART) with its first PI Planning.",
             icon: "train",
-          },
-          {
-            id: "org-design",
-            title: "Organisation design for fast flow",
-            time: "diagnosis 3–4 weeks",
-            text: "Team structure that speeds delivery up: product-aligned and platform teams, fewer hand-offs, change in stages without a “big bang”.",
-            icon: "flow",
           },
         ] as Entry[],
       },
     ],
-    // Entry points that serve both pillars.
+    // Engagements that serve both pillars.
     shared: {
       title: "For both pillars",
       items: [
         {
+          id: "due-diligence",
+          title: "Technical due diligence, including AI",
+          time: "2–4 weeks",
+          text: "For VC and PE funds: technology, architecture, team, vendor dependence and costs — and whether the company's AI is a real advantage or a wrapper around someone else's model. A risk register and a summary for the investment committee; the scope depends on access to data.",
+          icon: "search",
+        },
+        {
           id: "cost-optimisation",
           title: "Cloud and AI cost optimisation",
           time: "3–6 weeks",
-          text: "A review of your cloud and AI model bills, with savings you can implement and measure.",
+          text: "A review of your cloud and AI model bills, with savings you can implement and measure. If the fee is linked to savings, we first agree the baseline, volumes, discounts, cost of change, measurement period and quality.",
           icon: "chart",
         },
         {
           id: "rd-review",
           title: "Technical R&D review (Poland)",
           time: "1–2 weeks",
-          text: "Software and AI work that may qualify for R&D tax relief, identified and documented. A licensed tax adviser assesses eligibility.",
+          text: "For companies taxed in Poland: I help IT and R&D teams reconstruct and document how the work on software was done — project cards, a list of evidence sources and the gaps to fill. The material goes to you and your tax adviser for a separate assessment.",
           icon: "coins",
           link: { href: "#ai-rd", label: "How it works" },
         },
@@ -315,7 +306,7 @@ export const en = {
           "Board and leadership briefings without the hype",
           "Business cases with an honest “don't do it” option",
           "Impact on roles and people, not only on processes",
-          "AI policy and EU AI Act readiness from the start",
+          "An AI use policy and an initial AI Act risk classification",
         ],
         icon: "compass",
       },
@@ -362,8 +353,8 @@ export const en = {
     title: "AI development that may qualify",
     accent: "for R&D tax relief.",
     text: [
-      "For companies operating in Poland, developing a genuinely new AI-based solution may meet the definition of development work under Polish tax law. A routine implementation or a standard software change does not. I plan such projects so that, from day one, the technical work is documented in the way an R&D tax relief (ulga B+R) claim requires.",
-      "Whether the relief applies depends on the nature of the work, its documentation and your tax situation. A licensed Polish tax adviser assesses eligibility and advises on the claim; I provide the technical analysis and the evidence.",
+      "For companies taxed in Poland, creative and systematic development work on software and AI may meet the definition of development work under Polish tax law. Each project is assessed individually; routine changes and maintenance do not qualify. I plan such projects so that, from day one, the technical work is documented in the way an R&D tax relief (ulga B+R) claim requires.",
+      "The split of roles is clear. I describe the technical problem, the uncertainty and how the work progressed, and identify the documents and the gaps. A licensed Polish tax adviser assesses the tax effects, the qualifying costs and how to claim the relief.",
     ],
     points: [
       "Qualifying R&D staff costs may be deducted at 200%, other qualifying costs at 100% (standard rates)",
@@ -444,8 +435,8 @@ export const en = {
     items: [
       { title: "Defined project", text: "Scope and outcome agreed up front." },
       { title: "Ongoing support", text: "A few days a month, e.g. as a fractional CTO." },
-      { title: "Linked to results", text: "For cost optimisation: a fee linked to the savings achieved." },
-      { title: "Interim", text: "Full-time involvement for a defined period." },
+      { title: "Linked to results", text: "For cost optimisation: a fee linked to savings measured against an agreed baseline." },
+      { title: "Interim", text: "A leadership role for a defined period, with the mandate and availability agreed up front." },
     ],
   },
 
@@ -567,16 +558,16 @@ export const en = {
     title: "Frequently asked questions",
     items: [
       {
-        q: "How do we agree on the cost of working together?",
-        a: "After the first call I propose a scope and a quote in writing, matched to your situation. Packages have a defined scope, so you know up front what you get.",
+        q: "When does it make sense to get in touch?",
+        a: "When you already have a technical team and face a concrete decision: whether to scale an AI pilot, how to regain control of a project, or how to fill a gap in technology leadership. I work with companies only (B2B), from startups to large organisations.",
       },
       {
-        q: "Do you work with small companies?",
-        a: "Yes. I work with startups, small and mid-sized companies, and large organisations, and match the scope to the size of the company.",
+        q: "How do we agree on the cost of working together?",
+        a: "After the first call I propose a scope and a quote in writing, matched to your situation. Engagements have a defined scope and result, so you know up front what you get.",
       },
       {
         q: "Do you only advise, or do you help build AI systems?",
-        a: "Both. I design the architecture, lead the team and oversee the build and the testing — from the first prototype to a system running in production, with evaluation and monitoring in place.",
+        a: "Both. I design the architecture, set the quality criteria and lead the build with your team. Who writes the code, who maintains the system and how it is handed over are agreed before we start.",
       },
       {
         q: "Which AI model should we use?",
@@ -584,7 +575,7 @@ export const en = {
       },
       {
         q: "What about data security in AI projects?",
-        a: "It is the first topic in every project: choosing models and where data is processed, access rules, an AI use policy, and compliance with GDPR and the EU AI Act.",
+        a: "It is the first topic in every project: choosing models and where data is processed, access rules, confidentiality and how the model provider may use the data. I help put in place the technical measures for GDPR and the EU AI Act and document the roles; the legal assessment is agreed with your lawyers.",
       },
       {
         q: "Do you work with clients outside Poland?",
@@ -594,10 +585,12 @@ export const en = {
   },
 
   contact: {
-    title: "Let's talk about your challenge.",
-    text: "Write a few sentences about your situation. I will reply and suggest a time for a 30-minute call.",
-    subject: "Intro call",
-    button: "Email me",
+    title: "Let's talk about your project.",
+    text: "Write a few sentences about your situation: what you need to decide and by when. I will reply and suggest a time for a 30-minute call.",
+    subject: "30-minute call",
+    button: "Email me about a call",
+    copy: "Copy address",
+    copied: "Copied",
     privacy: "How I handle your data",
   },
 
@@ -616,21 +609,25 @@ export const en = {
     rates: { cit19: "CIT 19%", cit9: "CIT 9%", pit19: "PIT flat 19%" },
     cit9Note:
       "CIT 9% applies to small taxpayers (sales revenue up to EUR 2 million in the previous year) and to companies in their first tax year, and only while revenue in the current tax year does not exceed the PLN equivalent of EUR 2 million. It covers income other than capital gains, subject to further statutory conditions.",
-    effect: "Possible tax effect for this tax year",
+    effect: "Estimated tax reduction, with the full deduction and enough income",
+    costs: "Qualifying costs entered:",
     deduction: "Additional deduction from the tax base:",
+    invalid: "Correct the highlighted amount to see the result.",
+    cit9Link: "CIT information on podatki.gov.pl",
     disclaimer:
       "A simulation for one tax year for a standard taxpayer without research and development centre (CBR) status, not tax advice. It assumes the costs qualify and that there is enough income to absorb the whole deduction — for CIT, income from sources other than capital gains; for PIT, income from business activity. An unused part can be carried forward to the next six tax years. Whether the work and costs qualify depends on the nature of the work, its documentation and the taxpayer's situation, and is assessed by a licensed tax adviser. Progressive PIT is not modelled.",
     errors: {
       empty: "Enter an amount (0 if none).",
       negative: "The amount cannot be negative.",
       mixed: "Use one thousands separator throughout, e.g. 1 234 567 or 1,234,567 (whole PLN, no decimals).",
-      format: "Use whole PLN, e.g. 500000, 500 000 or 500,000.",
+      format: "Enter the amount in whole PLN, e.g. 500 000.",
       max: "Amounts above PLN 1 billion are not supported.",
     },
   },
 
   ui: {
-    bookCall: "Request a call",
+    bookCall: "Discuss a project",
+    skip: "Skip to content",
     menu: "Menu",
     close: "Close",
     contact: "Contact",
@@ -642,7 +639,7 @@ export const en = {
     workedWith: "Experience in",
     heroCaption: "20+ years in technology",
     timeNote:
-      "Timeframes are typical and depend on scope, team readiness and the availability of a sponsor on your side.",
+      "Timeframes are typical project durations, counted from access to the people and data; they depend on scope, team readiness and the availability of a sponsor on your side.",
     heroAlt: "Paweł Bajorek, founder of Pristis Management",
     // Language switch: shown in the header, leads to the other language.
     switchLabel: "PL",

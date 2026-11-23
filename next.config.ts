@@ -13,6 +13,11 @@ const nextConfig: NextConfig = {
     NEXT_PUBLIC_BASE_PATH: basePath,
   },
   trailingSlash: true,
+  // Two root layouts (English and Polish), so the 404 page is a standalone
+  // app/global-not-found.tsx, exported as 404.html.
+  experimental: {
+    globalNotFound: true,
+  },
   images: {
     unoptimized: true,
   },

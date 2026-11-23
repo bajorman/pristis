@@ -37,6 +37,7 @@ function BodyEn({ email }: { email: React.ReactNode }) {
           The controller of your personal data is {company.legalName}, trading as {site.name}, entered in the CEIDG
           (Central Register and Information on Economic Activity). You can contact me at {email}.
         </p>
+        <p>I provide my services to businesses only (B2B).</p>
       </Section>
 
       <Section title="What data I process and why">
@@ -51,9 +52,8 @@ function BodyEn({ email }: { email: React.ReactNode }) {
             contacts — my legitimate interest, Article 6(1)(f) GDPR.
           </li>
           <li>
-            If you contact me on your own behalf, for example as a sole trader or an individual client, I process your
-            data to reply and to take steps at your request before entering into a contract, and then to perform it —
-            Article 6(1)(b) GDPR.
+            If you contact me on your own behalf as a sole trader, I process your data to reply and to take steps at
+            your request before entering into a contract, and then to perform it — Article 6(1)(b) GDPR.
           </li>
           <li>To establish, pursue or defend claims — my legitimate interest, Article 6(1)(f) GDPR.</li>
           <li>To meet tax and accounting obligations once we work together — Article 6(1)(&#8204;c) GDPR.</li>
@@ -76,10 +76,13 @@ function BodyEn({ email }: { email: React.ReactNode }) {
         <p>
           To understand how the website is used, I use Umami Cloud, a privacy-focused analytics service provided by
           Umami Software, Inc. It does not use cookies, does not store anything on your device and does not track you
-          across other websites. It records anonymised, aggregated information: pages visited, the referring website,
-          browser, operating system, device type, country, the language version viewed, and clicks on key buttons and
-          links (for example &ldquo;Request a call&rdquo; or a starter package). Amounts entered in the calculator are
-          never recorded. The analytics data is stored in Umami&apos;s EU data region and kept for 6 months. The legal
+          across other websites. For each visit it records: pages visited, the referring website, browser, operating
+          system, device type, country, the language version viewed, and clicks on key buttons and links (for example
+          &ldquo;Request a call&rdquo; or an engagement). To tell visits apart, Umami derives a session identifier from,
+          among other things, your IP address and browser details, combined with a value that changes regularly; your
+          IP address itself is not stored, and the identifier cannot be used to recognise you over a longer period. I
+          see only aggregated statistics, never individual visitors. Amounts entered in the calculator are never
+          recorded. The analytics data is stored in Umami&apos;s EU data region and kept for 6 months. The legal
           basis is my legitimate interest in understanding how the website is used and improving it (Article 6(1)(f)
           GDPR). Umami acts as my processor under its <Ext href={UMAMI}>privacy policy</Ext> and data processing
           agreement; some supporting services (such as content delivery and security) may involve processing outside
@@ -137,6 +140,7 @@ function BodyPl({ email }: { email: React.ReactNode }) {
           do Centralnej Ewidencji i Informacji o Działalności Gospodarczej (CEIDG). Możesz się ze mną skontaktować pod
           adresem {email}.
         </p>
+        <p>Świadczę usługi wyłącznie na rzecz przedsiębiorców (B2B).</p>
       </Section>
 
       <Section title="Jakie dane przetwarzam i w jakim celu">
@@ -151,8 +155,7 @@ function BodyPl({ email }: { email: React.ReactNode }) {
             prawnie uzasadniony interes, art. 6 ust. 1 lit. f RODO.
           </li>
           <li>
-            Jeśli kontaktujesz się we własnym imieniu, np. jako przedsiębiorca jednoosobowy lub klient indywidualny,
-            przetwarzam dane, aby odpowiedzieć i podjąć na Twoje żądanie działania przed zawarciem umowy, a następnie
+            Jeśli kontaktujesz się we własnym imieniu jako przedsiębiorca jednoosobowy, przetwarzam dane, aby odpowiedzieć i podjąć na Twoje żądanie działania przed zawarciem umowy, a następnie
             ją wykonać – art. 6 ust. 1 lit. b RODO.
           </li>
           <li>W celu ustalenia, dochodzenia lub obrony roszczeń – mój prawnie uzasadniony interes, art. 6 ust. 1 lit. f RODO.</li>
@@ -176,10 +179,13 @@ function BodyPl({ email }: { email: React.ReactNode }) {
         <p>
           Aby wiedzieć, jak strona jest używana, korzystam z Umami Cloud – usługi analitycznej nastawionej na
           prywatność, świadczonej przez Umami Software, Inc. Nie używa ona plików cookie, nie zapisuje niczego na Twoim
-          urządzeniu i nie śledzi Cię na innych stronach. Rejestruje zanonimizowane, zbiorcze informacje: odwiedzone
-          strony, stronę, z której przyszedłeś, przeglądarkę, system operacyjny, rodzaj urządzenia, kraj, wersję
-          językową oraz kliknięcia kluczowych przycisków i linków (np. „Umów rozmowę” albo wybrany pakiet). Kwoty
-          wpisane w kalkulatorze nigdy nie są rejestrowane. Dane analityczne są przechowywane w regionie UE usługi
+          urządzeniu i nie śledzi Cię na innych stronach. Przy każdej wizycie rejestruje: odwiedzone strony, stronę, z
+          której przyszedłeś, przeglądarkę, system operacyjny, rodzaj urządzenia, kraj, wersję językową oraz
+          kliknięcia kluczowych przycisków i linków (np. „Umów rozmowę” albo wybraną formę współpracy). Aby odróżnić
+          wizyty, Umami tworzy identyfikator sesji m.in. z adresu IP i danych przeglądarki, połączonych z regularnie
+          zmienianą wartością; sam adres IP nie jest zapisywany, a identyfikator nie pozwala rozpoznać Cię w dłuższym
+          okresie. Ja widzę wyłącznie zbiorcze statystyki, nigdy pojedynczych odwiedzających. Kwoty wpisane w
+          kalkulatorze nigdy nie są rejestrowane. Dane analityczne są przechowywane w regionie UE usługi
           Umami przez 6 miesięcy. Podstawą prawną jest mój prawnie uzasadniony interes w rozumieniu, jak strona jest
           używana, i w jej ulepszaniu (art. 6 ust. 1 lit. f RODO). Umami działa jako podmiot przetwarzający na
           podstawie swojej <Ext href={UMAMI}>polityki prywatności</Ext> i umowy powierzenia przetwarzania danych;
