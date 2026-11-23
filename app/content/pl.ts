@@ -17,7 +17,6 @@ export const pl: Content = {
   nav: [
     { href: "#services", label: "Usługi" },
     { href: "#start", label: "Jak zacząć" },
-    { href: "#results", label: "Wyniki" },
     { href: "#ai", label: "AI" },
     { href: "#leadership", label: "Przywództwo" },
     { href: "#about", label: "O mnie" },
@@ -329,44 +328,6 @@ export const pl: Content = {
     ],
     cta: "Poproś o techniczny przegląd B+R",
     ctaSubject: "Techniczny przegląd B+R",
-  },
-
-  results: {
-    kicker: "Wybrane wyniki",
-    title: "Liczby z dotychczasowej pracy",
-    note: "Wyniki z moich wcześniejszych ról w branży oprogramowania, bankowości, technologii lotniczych i logistyce – osiągnięte przez zespoły i programy, którymi kierowałem lub w których pracowałem.",
-    items: [
-      {
-        value: "−80%",
-        title: "zasobów potrzebnych do wyważenia samolotu",
-        text: "Rozwiązanie oparte na AI dla linii lotniczych, wymyślone i zbudowane od zera.",
-      },
-      {
-        value: "20 → 150+",
-        title: "inżynierów w 3 lata",
-        text: "Zbudowałem organizację inżynierską stojącą za platformą automatów paczkowych wdrożoną w 8 krajach.",
-      },
-      {
-        value: "−50%",
-        title: "czasu cyklu dostarczania oprogramowania",
-        text: "Nowy ład portfelowy i zautomatyzowany proces zatwierdzania zmian.",
-      },
-      {
-        value: "−30%",
-        title: "problemów produkcyjnych",
-        text: "Przebudowa zespołów i bezpośrednie zaangażowanie inżynierów w problemy klientów.",
-      },
-      {
-        value: "ML",
-        title: "nowy produkt dla lotnictwa",
-        text: "Inteligentna sprzedaż usług dodatkowych linii lotniczych, zbudowana z globalnym partnerem technologicznym.",
-      },
-      {
-        value: "10",
-        title: "transformacji chmurowych",
-        text: "Przeniesienie usług do GCP i AWS w globalnych bankach i w technologiach lotniczych.",
-      },
-    ],
   },
 
   steps: {

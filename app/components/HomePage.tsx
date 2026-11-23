@@ -150,7 +150,7 @@ function PillarDepth({
 // The home page, rendered once per language from that language's copy.
 export default function HomePage({ t }: { t: Content }) {
   const { hero, facts, industries, problems, pillars, entries, aiExpertise, aiPrinciples, aiRd } = t;
-  const { leadership, orgPrinciples, results, steps, models, about, bookshelf, faq, contact, ui } = t;
+  const { leadership, orgPrinciples, steps, models, about, bookshelf, faq, contact, ui } = t;
   const other = t.locale === "en" ? "pl" : "en";
 
   return (
@@ -385,23 +385,6 @@ export default function HomePage({ t }: { t: Content }) {
               </div>
             </div>
             <p className="mt-8 text-sm text-muted">{ui.timeNote}</p>
-          </div>
-        </section>
-
-        {/* Results */}
-        <section id="results">
-          <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
-            <SectionTitle kicker={results.kicker} title={results.title} />
-            <p className="-mt-6 mb-10 max-w-3xl text-muted">{results.note}</p>
-            <div className="grid gap-px overflow-hidden rounded-3xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
-              {results.items.map((r) => (
-                <div key={r.title} className="bg-paper p-7">
-                  <p className="font-serif text-4xl font-semibold text-copper">{r.value}</p>
-                  <h3 className="mt-3 font-bold">{r.title}</h3>
-                  <p className="mt-2 text-[0.95rem] leading-relaxed text-muted">{r.text}</p>
-                </div>
-              ))}
-            </div>
           </div>
         </section>
 

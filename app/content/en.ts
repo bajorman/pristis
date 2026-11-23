@@ -42,7 +42,6 @@ export const en = {
   nav: [
     { href: "#services", label: "Services" },
     { href: "#start", label: "Engagements" },
-    { href: "#results", label: "Results" },
     { href: "#ai", label: "AI" },
     { href: "#leadership", label: "Leadership" },
     { href: "#about", label: "About" },
@@ -363,44 +362,6 @@ export const en = {
     ],
     cta: "Request a technical R&D review",
     ctaSubject: "Technical R&D review",
-  },
-
-  results: {
-    kicker: "Selected results",
-    title: "Numbers from past work",
-    note: "Results from my previous roles in software, banking, airline technology and logistics — achieved by the teams and programmes I led or was part of.",
-    items: [
-      {
-        value: "−80%",
-        title: "resources needed for aircraft weight and balance",
-        text: "An AI-based solution for airlines, conceived and delivered from scratch.",
-      },
-      {
-        value: "20 → 150+",
-        title: "engineers in 3 years",
-        text: "Built the engineering organisation behind a parcel locker platform rolled out in 8 countries.",
-      },
-      {
-        value: "−50%",
-        title: "software delivery cycle time",
-        text: "A new portfolio governance framework and an automated change approval process.",
-      },
-      {
-        value: "−30%",
-        title: "production issues",
-        text: "Restructured teams and involved engineers directly in customers' problems.",
-      },
-      {
-        value: "ML",
-        title: "a new product for aviation",
-        text: "Intelligent retailing of airline ancillaries, built together with a global technology partner.",
-      },
-      {
-        value: "10",
-        title: "cloud transformation initiatives",
-        text: "Moved services to GCP and AWS in global banks and in airline technology.",
-      },
-    ],
   },
 
   steps: {
