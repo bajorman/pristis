@@ -1,8 +1,8 @@
 import Image from "next/image";
 import type { Content } from "../content/en";
-import { asset, entryAnchor, mailto, paths, site } from "../site";
+import { asset, entryAnchor, paths, site } from "../site";
 import BrCalculator from "./BrCalculator";
-import CopyEmail from "./CopyEmail";
+import ContactActions from "./ContactActions";
 import Icon from "./Icon";
 import SiteFooter from "./SiteFooter";
 import SiteHeader from "./SiteHeader";
@@ -58,7 +58,8 @@ function EntryCard({ e, cta }: { e: Entry; cta: string }) {
         <p className="mt-2 text-[0.95rem] leading-relaxed text-muted">{e.text}</p>
         <div className="mt-3 flex flex-wrap gap-x-5 gap-y-1">
           <a
-            href={mailto(e.title)}
+            href="#contact"
+            data-topic={e.title}
             data-umami-event="Package enquiry"
             data-umami-event-package={e.id}
             className="inline-flex items-center gap-1.5 text-sm font-semibold text-ink hover:text-copper"
@@ -326,7 +327,8 @@ export default function HomePage({ t }: { t: Content }) {
                 <p className="mt-6 text-sm italic leading-relaxed text-white/60">{p.note}</p>
                 <div className="mt-6 border-t border-white/10 pt-6">
                   <a
-                    href={mailto(p.title)}
+                    href="#contact"
+                    data-topic={p.title}
                     data-umami-event="Service enquiry"
                     data-umami-event-service={p.id}
                     className="inline-flex items-center gap-1.5 text-sm font-semibold text-white hover:text-copper-light"
@@ -525,7 +527,8 @@ export default function HomePage({ t }: { t: Content }) {
                 ))}
               </ul>
               <a
-                href={mailto(aiRd.ctaSubject)}
+                href="#contact"
+                data-topic={aiRd.ctaSubject}
                 data-umami-event="R&D review request"
                 className="mt-10 inline-flex items-center gap-2 rounded-full bg-copper-light px-6 py-3.5 font-semibold text-ink transition hover:bg-white"
               >
@@ -569,15 +572,7 @@ export default function HomePage({ t }: { t: Content }) {
                 <p className="mt-6 max-w-xl text-lg text-white/85">{contact.text}</p>
               </div>
               <div className="flex flex-col gap-3">
-                <a
-                  href={mailto(contact.subject)}
-                  data-umami-event="Email me"
-                  data-umami-event-location="contact-button"
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-ink px-6 py-4 font-semibold transition hover:bg-white hover:text-ink"
-                >
-                  {contact.button} <Icon name="arrow" className="size-4" />
-                </a>
-                <CopyEmail copy={contact.copy} copied={contact.copied} />
+                <ContactActions t={contact} />
                 <a
                   href={site.linkedin}
                   data-umami-event="LinkedIn"

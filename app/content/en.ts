@@ -591,6 +591,8 @@ export const en = {
     button: "Email me about a call",
     copy: "Copy address",
     copied: "Copied",
+    topic: "Topic:",
+    hint: "The button opens your e-mail program. If nothing happens, copy the address above.",
     privacy: "How I handle your data",
   },
 

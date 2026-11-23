@@ -557,6 +557,8 @@ export const pl: Content = {
     button: "Napisz w sprawie rozmowy",
     copy: "Kopiuj adres",
     copied: "Skopiowano",
+    topic: "Temat:",
+    hint: "Przycisk otwiera Twój program pocztowy. Jeśli nic się nie dzieje, skopiuj adres powyżej.",
     privacy: "Jak przetwarzam Twoje dane",
   },
 
